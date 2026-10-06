@@ -1,0 +1,14 @@
+# Each team automatically gets requested for review on their folder.
+# Replace the @usernames with your teammates' GitHub usernames.
+
+*               @mohamed0s
+
+/backend/       @backend-dev-username
+/frontend/      @frontend-dev-username
+/mobile/        @flutter-dev-username
+/ai/            @ai-dev-username
+/design/        @uiux-username
+/infra/         @devops-username
+/.github/       @devops-username
+
+/docs/api/      @backend-dev-username @ai-dev-username

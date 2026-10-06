@@ -1,0 +1,5 @@
+# Runs the whole system locally:  docker compose up --build
+# Run just the database:           docker compose up postgres
+#
+# Each service needs a Dockerfile in its folder before it can start.
+

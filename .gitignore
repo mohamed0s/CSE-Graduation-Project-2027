@@ -1,0 +1,58 @@
+# ===== Secrets (NEVER commit) =====
+.env
+*.env
+!.env.example
+appsettings.Development.json
+*.keystore
+*.jks
+key.properties
+google-services.json
+GoogleService-Info.plist
+
+# ===== OS / Editors =====
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# ===== .NET (backend) =====
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+
+# ===== Flutter / Dart (mobile, frontend) =====
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+**/android/.gradle/
+**/android/local.properties
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+
+# ===== Python (ai) =====
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===== Node (if frontend migrates) =====
+node_modules/
+dist/
+.next/
+
+# ===== Logs =====
+*.log
