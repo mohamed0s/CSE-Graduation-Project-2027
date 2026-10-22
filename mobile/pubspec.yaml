@@ -47,6 +47,10 @@ dependencies:
   dartz: ^0.10.1
   flutter_bloc: ^9.1.1
   equatable: ^2.1.0
+  slang: ^4.19.2
+  slang_flutter: ^4.19.0
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
