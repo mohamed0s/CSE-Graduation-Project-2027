@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/app.dart';
+import 'package:mobile/core/i18n/controller/locale_cubit.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'core/di/injection_container.dart' as di;
 
@@ -25,5 +27,10 @@ void main() async {
   // Initialize dependency injection
   await di.init();
 
-  runApp(TranslationProvider(child: const MyApp()));
+  runApp(
+    BlocProvider(
+      create: (context) => LocaleCubit(),
+      child: TranslationProvider(child: const MyApp()),
+    ),
+  );
 }
