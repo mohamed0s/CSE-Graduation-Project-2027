@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:mobile/features/auth/presentation/pages/login_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/home/views/home_screen.dart';
@@ -14,7 +15,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: AppRouter.splash,
-        builder: (context, state) => const SplashScreen(),
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
         path: AppRouter.onboarding,
