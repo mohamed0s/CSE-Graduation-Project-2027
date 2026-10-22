@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile/app.dart';
+import 'package:mobile/core/i18n/strings.g.dart';
 import 'core/di/injection_container.dart' as di;
 
 void main() async {
+  LocaleSettings.useDeviceLocale();
   WidgetsFlutterBinding.ensureInitialized();
 
   // Set preferred orientations
@@ -23,5 +25,5 @@ void main() async {
   // Initialize dependency injection
   await di.init();
 
-  runApp(const MyApp());
+  runApp(TranslationProvider(child: const MyApp()));
 }
