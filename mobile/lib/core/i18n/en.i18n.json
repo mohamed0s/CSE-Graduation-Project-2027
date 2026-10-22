@@ -1,0 +1,8 @@
+{
+  "hello": "Hello",
+  "login": "Login",
+  "home": {
+    "title": "Home Page",
+    "welcome": "Welcome back"
+  }
+}
