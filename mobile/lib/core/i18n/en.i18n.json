@@ -1,8 +1,28 @@
 {
-  "hello": "Hello",
-  "login": "Login",
-  "home": {
-    "title": "Home Page",
-    "welcome": "Welcome back"
+  "login": {
+    "title": "Welcome back 👋",
+    "subtitle": "Log in and get ready to find everything you need easily",
+    "phone_label": "Phone Number",
+    "password_label": "Password",
+    "forgot_password": "Forgot Password?",
+    "login_button": "Log In",
+    "or_login_with": "Or log in with",
+    "no_account": "Don't have an account yet?",
+    "create_now": "Create one now"
+  },
+  "signup": {
+    "title": "Welcome 👋",
+    "subtitle": "Create your account in seconds and let us make it easier for you every time you need something",
+    "name_label": "Name",
+    "name_hint": "Ahmed Mahmoud",
+    "phone_label": "Phone Number",
+    "email_label": "Email",
+    "email_hint": "Name@Gmail.Com",
+    "password_label": "Password",
+    "confirm_password_label": "Confirm Password",
+    "signup_button": "Create Account",
+    "or_signup_with": "Or log in via",
+    "have_account": "Already have an account?",
+    "login_now": "Log in now"
   }
 }

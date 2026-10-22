@@ -1,8 +1,28 @@
 {
-  "hello": "اهلا!",
-  "login": "تسجيل الدخول",
-  "home": {
-    "title": "الصفحة الرئيسية",
-    "welcome": "نورتنا من تاني"
+  "login": {
+    "title": "اهلا بيك تاني 👋",
+    "subtitle": "سجل دخولك وخليك جاهز تلاقى كل اللى محتاجه بسهولة",
+    "phone_label": "رقم الموبايل",
+    "password_label": "كلمة السر",
+    "forgot_password": "نسيت كلمة السر؟",
+    "login_button": "تسجيل الدخول",
+    "or_login_with": "أو سجل باستخدام",
+    "no_account": "لسه معندكش حساب؟",
+    "create_now": "اعمل واحد دلوقتي"
+  },
+  "signup": {
+    "title": "أهلاً بيك 👋",
+    "subtitle": "اعمل حسابك في ثواني وخلينا نسهل عليك كل مرة تحتاج فيها حاجة",
+    "name_label": "الاسم",
+    "name_hint": "احمد محمود",
+    "phone_label": "رقم الموبايل",
+    "email_label": "البريد الإلكتروني",
+    "email_hint": "Name@Gmail.Com",
+    "password_label": "كلمة السر",
+    "confirm_password_label": "تأكيد كلمة السر",
+    "signup_button": "إنشاء حساب",
+    "or_signup_with": "أو سجل الدخول عبر",
+    "have_account": "عندك حساب؟",
+    "login_now": "سجل الدخول دلوقتي"
   }
 }
