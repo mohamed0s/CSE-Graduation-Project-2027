@@ -3,7 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
+import 'package:mobile/core/widgets/buttons/custom_button.dart';
 import 'package:mobile/core/widgets/inputs/custom_text_form_field.dart';
+import 'package:mobile/features/auth/presentation/widgets/custom_divider_with_text.dart';
+import 'package:mobile/features/auth/presentation/widgets/custom_rich_text_widget.dart';
+import 'package:mobile/features/auth/presentation/widgets/social_auth_buttons.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -94,6 +98,35 @@ class _LoginScreenState extends State<LoginScreen> {
                                   label: t.login.password_label,
                                   hintText: '********',
                                 ),
+                                SizedBox(height: 16.h),
+                                Align(
+                                  alignment: AlignmentDirectional.centerStart,
+                                  child: Text(
+                                    t.login.forgot_password,
+                                    style: context.bold14Primary,
+                                  ),
+                                ),
+                                SizedBox(height: 40.h),
+                                CustomAppButton(
+                                  text: t.login.login_button,
+                                  onPressed: () {},
+                                ),
+                                SizedBox(height: 40.h),
+                                CustomDividerWithText(
+                                  text: t.login.or_login_with,
+                                ),
+                                SizedBox(height: 40.h),
+                                SocialAuthButtons(
+                                  onGoogleTap: () {},
+                                  onAppleTap: () {},
+                                ),
+                                SizedBox(height: 40.h),
+                                CustomRichTextButton(
+                                  firstText: t.login.no_account,
+                                  secondText: t.login.create_now,
+                                  onTap: () {},
+                                ),
+                                SizedBox(height: 40.h),
                               ],
                             ),
                           ),
