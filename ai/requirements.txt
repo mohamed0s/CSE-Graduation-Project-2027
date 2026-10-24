@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+httpx
+pydantic
+python-dotenv
+google-genai>=2.3.0
+typesafe-sdk>=0.7.5
+pytest
