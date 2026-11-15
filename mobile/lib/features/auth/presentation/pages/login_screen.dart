@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/routes/app_router.dart';
 import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
@@ -57,6 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             horizontal: 24.w,
                           ),
                           child: Form(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             key: _formKey,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,7 +134,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 CustomRichTextButton(
                                   firstText: t.login.no_account,
                                   secondText: t.login.create_now,
-                                  onTap: () {},
+                                  onTap: () {
+                                    GoRouter.of(context).push(AppRouter.signup);
+                                  },
                                 ),
                                 SizedBox(height: 40.h),
                               ],
