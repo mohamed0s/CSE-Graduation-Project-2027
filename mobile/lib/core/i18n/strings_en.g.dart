@@ -43,6 +43,10 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	// Translations
 	late final Translations$login$en login = Translations$login$en._(_root);
 	late final Translations$signup$en signup = Translations$signup$en._(_root);
+	late final Translations$otp$en otp = Translations$otp$en._(_root);
+	late final Translations$forgot_password$en forgot_password = Translations$forgot_password$en._(_root);
+	late final Translations$reset_password$en reset_password = Translations$reset_password$en._(_root);
+	late final Translations$password_changed$en password_changed = Translations$password_changed$en._(_root);
 }
 
 // Path: login
@@ -129,6 +133,126 @@ class Translations$signup$en {
 	String get login_now => 'Log in now';
 }
 
+// Path: otp
+class Translations$otp$en {
+	Translations$otp$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Quick Security Step'
+	String get app_bar_title => 'Quick Security Step';
+
+	/// en: 'Let's verify your phone number'
+	String get phone_title => 'Let\'s verify your phone number';
+
+	/// en: 'Enter the 6-digit code we sent to your registered phone number'
+	String get phone_subtitle => 'Enter the 6-digit code we sent to your registered phone number';
+
+	/// en: 'Let's verify your account'
+	String get email_title => 'Let\'s verify your account';
+
+	/// en: 'Enter the 6-digit code we sent to your email address'
+	String get email_subtitle => 'Enter the 6-digit code we sent to your email address';
+
+	/// en: 'Verify'
+	String get submit_button => 'Verify';
+
+	/// en: 'Didn't receive the code?'
+	String get didnt_receive_code => 'Didn\'t receive the code?';
+
+	/// en: 'Resend'
+	String get resend => 'Resend';
+}
+
+// Path: forgot_password
+class Translations$forgot_password$en {
+	Translations$forgot_password$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Forgot Password'
+	String get app_bar_title => 'Forgot Password';
+
+	/// en: 'Forgot Password?'
+	String get title => 'Forgot Password?';
+
+	/// en: 'Enter your details so we can help you recover your account'
+	String get subtitle => 'Enter your details so we can help you recover your account';
+
+	/// en: 'Email'
+	String get email_label => 'Email';
+
+	/// en: 'Name@Gmail.Com'
+	String get email_hint => 'Name@Gmail.Com';
+
+	/// en: 'Send Code'
+	String get send_code_button => 'Send Code';
+
+	/// en: 'Remembered your password?'
+	String get remembered_password => 'Remembered your password?';
+
+	/// en: 'Log In'
+	String get login => 'Log In';
+
+	/// en: 'Need help? Our support team is available for account recovery.'
+	String get need_help => 'Need help? Our support team is available for account recovery.';
+}
+
+// Path: reset_password
+class Translations$reset_password$en {
+	Translations$reset_password$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Reset Password'
+	String get app_bar_title => 'Reset Password';
+
+	/// en: 'Create a New Password'
+	String get title => 'Create a New Password';
+
+	/// en: 'Choose a new password so you can access your account safely'
+	String get subtitle => 'Choose a new password so you can access your account safely';
+
+	/// en: 'New Password'
+	String get new_password_label => 'New Password';
+
+	/// en: 'Confirm Password'
+	String get confirm_password_label => 'Confirm Password';
+
+	/// en: 'Change Password'
+	String get change_password_button => 'Change Password';
+
+	/// en: 'Remembered your password?'
+	String get remembered_password => 'Remembered your password?';
+
+	/// en: 'Log In'
+	String get login => 'Log In';
+}
+
+// Path: password_changed
+class Translations$password_changed$en {
+	Translations$password_changed$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Password Changed Successfully! 🎉'
+	String get title => 'Password Changed Successfully! 🎉';
+
+	/// en: 'You can now log in using your new password'
+	String get subtitle => 'You can now log in using your new password';
+
+	/// en: 'Back to Login'
+	String get back_to_login => 'Back to Login';
+}
+
 /// The flat map containing all translations for locale <en>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -159,6 +283,34 @@ extension on Translations {
 			'signup.or_signup_with' => 'Or log in via',
 			'signup.have_account' => 'Already have an account?',
 			'signup.login_now' => 'Log in now',
+			'otp.app_bar_title' => 'Quick Security Step',
+			'otp.phone_title' => 'Let\'s verify your phone number',
+			'otp.phone_subtitle' => 'Enter the 6-digit code we sent to your registered phone number',
+			'otp.email_title' => 'Let\'s verify your account',
+			'otp.email_subtitle' => 'Enter the 6-digit code we sent to your email address',
+			'otp.submit_button' => 'Verify',
+			'otp.didnt_receive_code' => 'Didn\'t receive the code?',
+			'otp.resend' => 'Resend',
+			'forgot_password.app_bar_title' => 'Forgot Password',
+			'forgot_password.title' => 'Forgot Password?',
+			'forgot_password.subtitle' => 'Enter your details so we can help you recover your account',
+			'forgot_password.email_label' => 'Email',
+			'forgot_password.email_hint' => 'Name@Gmail.Com',
+			'forgot_password.send_code_button' => 'Send Code',
+			'forgot_password.remembered_password' => 'Remembered your password?',
+			'forgot_password.login' => 'Log In',
+			'forgot_password.need_help' => 'Need help? Our support team is available for account recovery.',
+			'reset_password.app_bar_title' => 'Reset Password',
+			'reset_password.title' => 'Create a New Password',
+			'reset_password.subtitle' => 'Choose a new password so you can access your account safely',
+			'reset_password.new_password_label' => 'New Password',
+			'reset_password.confirm_password_label' => 'Confirm Password',
+			'reset_password.change_password_button' => 'Change Password',
+			'reset_password.remembered_password' => 'Remembered your password?',
+			'reset_password.login' => 'Log In',
+			'password_changed.title' => 'Password Changed Successfully! 🎉',
+			'password_changed.subtitle' => 'You can now log in using your new password',
+			'password_changed.back_to_login' => 'Back to Login',
 			_ => null,
 		};
 	}

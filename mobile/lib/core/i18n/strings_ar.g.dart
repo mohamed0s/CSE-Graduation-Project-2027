@@ -40,6 +40,10 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	// Translations
 	@override late final _Translations$login$ar login = _Translations$login$ar._(_root);
 	@override late final _Translations$signup$ar signup = _Translations$signup$ar._(_root);
+	@override late final _Translations$otp$ar otp = _Translations$otp$ar._(_root);
+	@override late final _Translations$forgot_password$ar forgot_password = _Translations$forgot_password$ar._(_root);
+	@override late final _Translations$reset_password$ar reset_password = _Translations$reset_password$ar._(_root);
+	@override late final _Translations$password_changed$ar password_changed = _Translations$password_changed$ar._(_root);
 }
 
 // Path: login
@@ -82,6 +86,70 @@ class _Translations$signup$ar implements Translations$signup$en {
 	@override String get login_now => 'سجل الدخول دلوقتي';
 }
 
+// Path: otp
+class _Translations$otp$ar implements Translations$otp$en {
+	_Translations$otp$ar._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get app_bar_title => 'خطوة أمان بسيطة';
+	@override String get phone_title => 'خلينا نتأكد انه رقم تلفونك';
+	@override String get phone_subtitle => 'دخل الكود المكون من 6 أرقام اللي بعتناهولك على رقم التلفون اللي سجلت بيه';
+	@override String get email_title => 'خلينا نتأكد انه حسابك';
+	@override String get email_subtitle => 'دخل الكود المكون من 6 أرقام اللي بعتناهولك على البريد الالكتروني';
+	@override String get submit_button => 'ارسال';
+	@override String get didnt_receive_code => 'الكود موصلش؟';
+	@override String get resend => 'إعادة الإرسال';
+}
+
+// Path: forgot_password
+class _Translations$forgot_password$ar implements Translations$forgot_password$en {
+	_Translations$forgot_password$ar._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get app_bar_title => 'نسيت كلمة السر';
+	@override String get title => 'نسيت كلمة السر؟';
+	@override String get subtitle => 'دخل بياناتك عشان نساعدك ترجع حسابك';
+	@override String get email_label => 'البريد الإلكتروني';
+	@override String get email_hint => 'Name@Gmail.Com';
+	@override String get send_code_button => 'ابعتلي الكود';
+	@override String get remembered_password => 'افتكرت كلمة السر؟';
+	@override String get login => 'تسجيل الدخول';
+	@override String get need_help => 'هل تحتاج إلى مساعدة؟ فريق الدعم متاح لاستعادة الحساب.';
+}
+
+// Path: reset_password
+class _Translations$reset_password$ar implements Translations$reset_password$en {
+	_Translations$reset_password$ar._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get app_bar_title => 'إعادة تعيين كلمة السر';
+	@override String get title => 'اعمل كلمة سر جديدة';
+	@override String get subtitle => 'اختار كلمة سر جديدة عشان تقدر تدخل حسابك بأمان';
+	@override String get new_password_label => 'كلمة السر الجديدة';
+	@override String get confirm_password_label => 'تأكيد كلمة السر';
+	@override String get change_password_button => 'تغيير كلمة السر';
+	@override String get remembered_password => 'افتكرت كلمة السر؟';
+	@override String get login => 'تسجيل الدخول';
+}
+
+// Path: password_changed
+class _Translations$password_changed$ar implements Translations$password_changed$en {
+	_Translations$password_changed$ar._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'كلمة السر اتغيّرت بنجاح! 🎉';
+	@override String get subtitle => 'دلوقتي تقدر تسجّل دخولك باستخدام كلمة السر الجديدة';
+	@override String get back_to_login => 'ارجع لصفحة تسجيل الدخول';
+}
+
 /// The flat map containing all translations for locale <ar>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -112,6 +180,34 @@ extension on TranslationsAr {
 			'signup.or_signup_with' => 'أو سجل الدخول عبر',
 			'signup.have_account' => 'عندك حساب؟',
 			'signup.login_now' => 'سجل الدخول دلوقتي',
+			'otp.app_bar_title' => 'خطوة أمان بسيطة',
+			'otp.phone_title' => 'خلينا نتأكد انه رقم تلفونك',
+			'otp.phone_subtitle' => 'دخل الكود المكون من 6 أرقام اللي بعتناهولك على رقم التلفون اللي سجلت بيه',
+			'otp.email_title' => 'خلينا نتأكد انه حسابك',
+			'otp.email_subtitle' => 'دخل الكود المكون من 6 أرقام اللي بعتناهولك على البريد الالكتروني',
+			'otp.submit_button' => 'ارسال',
+			'otp.didnt_receive_code' => 'الكود موصلش؟',
+			'otp.resend' => 'إعادة الإرسال',
+			'forgot_password.app_bar_title' => 'نسيت كلمة السر',
+			'forgot_password.title' => 'نسيت كلمة السر؟',
+			'forgot_password.subtitle' => 'دخل بياناتك عشان نساعدك ترجع حسابك',
+			'forgot_password.email_label' => 'البريد الإلكتروني',
+			'forgot_password.email_hint' => 'Name@Gmail.Com',
+			'forgot_password.send_code_button' => 'ابعتلي الكود',
+			'forgot_password.remembered_password' => 'افتكرت كلمة السر؟',
+			'forgot_password.login' => 'تسجيل الدخول',
+			'forgot_password.need_help' => 'هل تحتاج إلى مساعدة؟ فريق الدعم متاح لاستعادة الحساب.',
+			'reset_password.app_bar_title' => 'إعادة تعيين كلمة السر',
+			'reset_password.title' => 'اعمل كلمة سر جديدة',
+			'reset_password.subtitle' => 'اختار كلمة سر جديدة عشان تقدر تدخل حسابك بأمان',
+			'reset_password.new_password_label' => 'كلمة السر الجديدة',
+			'reset_password.confirm_password_label' => 'تأكيد كلمة السر',
+			'reset_password.change_password_button' => 'تغيير كلمة السر',
+			'reset_password.remembered_password' => 'افتكرت كلمة السر؟',
+			'reset_password.login' => 'تسجيل الدخول',
+			'password_changed.title' => 'كلمة السر اتغيّرت بنجاح! 🎉',
+			'password_changed.subtitle' => 'دلوقتي تقدر تسجّل دخولك باستخدام كلمة السر الجديدة',
+			'password_changed.back_to_login' => 'ارجع لصفحة تسجيل الدخول',
 			_ => null,
 		};
 	}

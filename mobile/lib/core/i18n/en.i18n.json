@@ -24,5 +24,41 @@
     "or_signup_with": "Or log in via",
     "have_account": "Already have an account?",
     "login_now": "Log in now"
+  },
+  "otp": {
+    "app_bar_title": "Quick Security Step",
+    "phone_title": "Let's verify your phone number",
+    "phone_subtitle": "Enter the 6-digit code we sent to your registered phone number",
+    "email_title": "Let's verify your account",
+    "email_subtitle": "Enter the 6-digit code we sent to your email address",
+    "submit_button": "Verify",
+    "didnt_receive_code": "Didn't receive the code?",
+    "resend": "Resend"
+  },
+  "forgot_password": {
+    "app_bar_title": "Forgot Password",
+    "title": "Forgot Password?",
+    "subtitle": "Enter your details so we can help you recover your account",
+    "email_label": "Email",
+    "email_hint": "Name@Gmail.Com",
+    "send_code_button": "Send Code",
+    "remembered_password": "Remembered your password?",
+    "login": "Log In",
+    "need_help": "Need help? Our support team is available for account recovery."
+  },
+  "reset_password": {
+    "app_bar_title": "Reset Password",
+    "title": "Create a New Password",
+    "subtitle": "Choose a new password so you can access your account safely",
+    "new_password_label": "New Password",
+    "confirm_password_label": "Confirm Password",
+    "change_password_button": "Change Password",
+    "remembered_password": "Remembered your password?",
+    "login": "Log In"
+  },
+  "password_changed": {
+    "title": "Password Changed Successfully! 🎉",
+    "subtitle": "You can now log in using your new password",
+    "back_to_login": "Back to Login"
   }
 }

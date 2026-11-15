@@ -24,5 +24,41 @@
     "or_signup_with": "أو سجل الدخول عبر",
     "have_account": "عندك حساب؟",
     "login_now": "سجل الدخول دلوقتي"
+  },
+  "otp": {
+    "app_bar_title": "خطوة أمان بسيطة",
+    "phone_title": "خلينا نتأكد انه رقم تلفونك",
+    "phone_subtitle": "دخل الكود المكون من 6 أرقام اللي بعتناهولك على رقم التلفون اللي سجلت بيه",
+    "email_title": "خلينا نتأكد انه حسابك",
+    "email_subtitle": "دخل الكود المكون من 6 أرقام اللي بعتناهولك على البريد الالكتروني",
+    "submit_button": "ارسال",
+    "didnt_receive_code": "الكود موصلش؟",
+    "resend": "إعادة الإرسال"
+  },
+  "forgot_password": {
+    "app_bar_title": "نسيت كلمة السر",
+    "title": "نسيت كلمة السر؟",
+    "subtitle": "دخل بياناتك عشان نساعدك ترجع حسابك",
+    "email_label": "البريد الإلكتروني",
+    "email_hint": "Name@Gmail.Com",
+    "send_code_button": "ابعتلي الكود",
+    "remembered_password": "افتكرت كلمة السر؟",
+    "login": "تسجيل الدخول",
+    "need_help": "هل تحتاج إلى مساعدة؟ فريق الدعم متاح لاستعادة الحساب."
+  },
+  "reset_password": {
+    "app_bar_title": "إعادة تعيين كلمة السر",
+    "title": "اعمل كلمة سر جديدة",
+    "subtitle": "اختار كلمة سر جديدة عشان تقدر تدخل حسابك بأمان",
+    "new_password_label": "كلمة السر الجديدة",
+    "confirm_password_label": "تأكيد كلمة السر",
+    "change_password_button": "تغيير كلمة السر",
+    "remembered_password": "افتكرت كلمة السر؟",
+    "login": "تسجيل الدخول"
+  },
+  "password_changed": {
+    "title": "كلمة السر اتغيّرت بنجاح! 🎉",
+    "subtitle": "دلوقتي تقدر تسجّل دخولك باستخدام كلمة السر الجديدة",
+    "back_to_login": "ارجع لصفحة تسجيل الدخول"
   }
 }
