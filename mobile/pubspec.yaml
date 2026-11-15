@@ -45,7 +45,7 @@ dependencies:
   go_router: ^18.0.2
   google_fonts: ^8.2.1
   internet_connection_checker: ^3.0.1
-  pinput: ^7.0.0
+  pinput: ^6.0.2
   pretty_dio_logger: ^1.4.0
   shared_preferences: ^2.5.6
   slang: ^4.19.2

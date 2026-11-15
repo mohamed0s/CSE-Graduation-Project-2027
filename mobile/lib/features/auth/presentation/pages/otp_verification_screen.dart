@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/theme/app_colors.dart';
-import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/features/auth/presentation/widgets/auth_header_icon.dart';
+import 'package:mobile/features/auth/presentation/widgets/custom_otp_field.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
 class OTPVerificationScreen extends StatefulWidget {
@@ -14,6 +14,26 @@ class OTPVerificationScreen extends StatefulWidget {
 }
 
 class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
+  final _otpController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  void _verifyCode() {
+    if (_formKey.currentState!.validate()) {
+      final otpCode = _otpController.text;
+      // context.read<AuthCubit>().verifyOtp(code: otpCode, ...);
+    }
+  }
+
+  bool isRtl() {
+    return Directionality.of(context) == TextDirection.rtl;
+  }
+
+  @override
+  void dispose() {
+    _otpController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +89,26 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 48.h),
+                          Directionality(
+                            textDirection: isRtl()
+                                ? TextDirection.rtl
+                                : TextDirection.ltr,
+                            child: Form(
+                              key: _formKey,
+                              child: CustomOtpField(
+                                controller: _otpController,
+                                validator: (value) {
+                                  if (value == null || value.length < 6) {
+                                    return 'Please enter the 6-digit code';
+                                  }
+                                  return null;
+                                },
+                                onCompleted: (pin) {
+                                  _verifyCode();
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),

@@ -33,7 +33,7 @@ class CustomOtpField extends StatelessWidget {
         borderRadius: BorderRadius.circular(28.r),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.08),
+            color: AppColors.primary.withValues(alpha: 0.3),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -53,22 +53,25 @@ class CustomOtpField extends StatelessWidget {
       ),
     );
 
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: Pinput(
-        length: 6,
-        controller: controller,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        keyboardType: TextInputType.number,
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        autofillHints: const [AutofillHints.oneTimeCode],
-        defaultPinTheme: defaultPinTheme,
-        focusedPinTheme: focusedPinTheme,
-        submittedPinTheme: defaultPinTheme,
-        errorPinTheme: errorPinTheme,
-        validator: validator,
-        onCompleted: onCompleted,
-        onChanged: onChanged,
+    return Material(
+      type: MaterialType.transparency,
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Pinput(
+          length: 6,
+          controller: controller,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          keyboardType: TextInputType.number,
+          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+          autofillHints: const [AutofillHints.oneTimeCode],
+          defaultPinTheme: defaultPinTheme,
+          focusedPinTheme: focusedPinTheme,
+          submittedPinTheme: defaultPinTheme,
+          errorPinTheme: errorPinTheme,
+          validator: validator,
+          onCompleted: onCompleted,
+          onChanged: onChanged,
+        ),
       ),
     );
   }
