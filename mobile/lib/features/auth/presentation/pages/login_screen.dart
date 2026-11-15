@@ -4,6 +4,7 @@ import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
+import 'package:mobile/core/widgets/inputs/country_picker_prefix.dart';
 import 'package:mobile/core/widgets/inputs/custom_text_form_field.dart';
 import 'package:mobile/features/auth/presentation/widgets/custom_divider_with_text.dart';
 import 'package:mobile/features/auth/presentation/widgets/custom_rich_text_widget.dart';
@@ -18,6 +19,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  String _dialCode = '+20';
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -67,24 +69,28 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 SizedBox(height: 40.h),
                                 CustomTextFormField(
+                                  label: t.login.phone_label,
                                   labelStyle: context.bold14Black,
                                   controller: _phoneNumberController,
-                                  prefixIcon: Row(
-                                    children: [
-                                      SizedBox(width: 16.w),
-                                      Icon(
-                                        Icons.keyboard_arrow_down_rounded,
-                                        color: AppColors.secondary,
-                                      ),
-                                      SizedBox(width: 4.w),
-                                      Icon(
-                                        Icons.flag,
-                                        color: AppColors.secondary,
-                                      ),
-                                    ],
+                                  keyboardType: TextInputType.phone,
+                                  hintText: 'EX: EGY => 1012345678',
+                                  prefixIcon: CountryPickerPrefix(
+                                    onCodeChanged: (code) {
+                                      _dialCode = code;
+                                    },
                                   ),
-                                  label: t.login.phone_label,
-                                  hintText: '123456789',
+                                  validator: (value) {
+                                    if (value == null || value.trim().isEmpty) {
+                                      return 'Please enter your phone number';
+                                    }
+                                    if (_dialCode == '+20' &&
+                                        !RegExp(
+                                          r'^1[0125][0-9]{8}$',
+                                        ).hasMatch(value.trim())) {
+                                      return 'Invalid Egyptian phone number';
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(
