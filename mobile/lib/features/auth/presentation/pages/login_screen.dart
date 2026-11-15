@@ -1,9 +1,12 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/routes/app_router.dart';
 import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/validators.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
 import 'package:mobile/core/widgets/inputs/country_picker_prefix.dart';
@@ -83,18 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       _dialCode = code;
                                     },
                                   ),
-                                  validator: (value) {
-                                    if (value == null || value.trim().isEmpty) {
-                                      return 'Please enter your phone number';
-                                    }
-                                    if (_dialCode == '+20' &&
-                                        !RegExp(
-                                          r'^1[0125][0-9]{8}$',
-                                        ).hasMatch(value.trim())) {
-                                      return 'Invalid Egyptian phone number';
-                                    }
-                                    return null;
-                                  },
+                                  validator: Validators.phone,
                                 ),
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(

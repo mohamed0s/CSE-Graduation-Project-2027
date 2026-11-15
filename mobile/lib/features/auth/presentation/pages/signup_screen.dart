@@ -1,9 +1,12 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/routes/app_router.dart';
 import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/validators.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
 import 'package:mobile/core/widgets/inputs/country_picker_prefix.dart';
@@ -99,20 +102,17 @@ class _SignupScreenState extends State<SignupScreen> {
                                     Icons.person_outline_rounded,
                                     color: Color(0xFF8A9AAB),
                                   ),
-                                  validator: (value) {
-                                    if (value == null || value.trim().isEmpty) {
-                                      return 'Please enter your name';
-                                    }
-                                    if (!RegExp(
-                                      r'^[a-zA-Z\s]+$',
-                                    ).hasMatch(value.trim())) {
-                                      return 'Name can only contain letters and spaces';
-                                    }
-                                    if (value.trim().length < 3) {
-                                      return 'Name must be at least 3 characters long';
-                                    }
-                                    return null;
-                                  },
+                                  validator: Validators.combine([
+                                    (value) => Validators.required(
+                                      value,
+                                      fieldName: 'Name',
+                                    ),
+                                    (value) => Validators.minLength(
+                                      value,
+                                      3,
+                                      fieldName: 'Name',
+                                    ),
+                                  ]),
                                 ),
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(
@@ -126,18 +126,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                       _dialCode = code;
                                     },
                                   ),
-                                  validator: (value) {
-                                    if (value == null || value.trim().isEmpty) {
-                                      return 'Please enter your phone number';
-                                    }
-                                    if (_dialCode == '+20' &&
-                                        !RegExp(
-                                          r'^1[0125][0-9]{8}$',
-                                        ).hasMatch(value.trim())) {
-                                      return 'Invalid Egyptian phone number';
-                                    }
-                                    return null;
-                                  },
+                                  validator: Validators.phone,
                                 ),
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(
@@ -150,17 +139,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     Icons.email_outlined,
                                     color: Color(0xFF8A9AAB),
                                   ),
-                                  validator: (value) {
-                                    if (value == null || value.trim().isEmpty) {
-                                      return 'Please enter your email';
-                                    }
-                                    if (!RegExp(
-                                      r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-                                    ).hasMatch(value.trim())) {
-                                      return 'Invalid email address';
-                                    }
-                                    return null;
-                                  },
+                                  validator: Validators.email,
                                 ),
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(
@@ -173,20 +152,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   isPassword: true,
                                   label: t.signup.password_label,
                                   hintText: '********',
-                                  validator: (value) {
-                                    if (value == null || value.trim().isEmpty) {
-                                      return 'Please enter your password';
-                                    }
-                                    if (value.length < 8) {
-                                      return 'Password must be at least 8 characters long';
-                                    }
-                                    if (!RegExp(
-                                      r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$',
-                                    ).hasMatch(value.trim())) {
-                                      return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character';
-                                    }
-                                    return null;
-                                  },
+                                  validator: Validators.password,
                                 ),
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(
@@ -199,15 +165,11 @@ class _SignupScreenState extends State<SignupScreen> {
                                   isPassword: true,
                                   label: t.signup.confirm_password_label,
                                   hintText: '********',
-                                  validator: (value) {
-                                    if (value == null || value.trim().isEmpty) {
-                                      return 'Please confirm your password';
-                                    }
-                                    if (value != _passwordController.text) {
-                                      return 'Passwords do not match';
-                                    }
-                                    return null;
-                                  },
+                                  validator: (value) =>
+                                      Validators.confirmPassword(
+                                        value,
+                                        _passwordController.text,
+                                      ),
                                 ),
                                 SizedBox(height: 40.h),
                                 CustomAppButton(
