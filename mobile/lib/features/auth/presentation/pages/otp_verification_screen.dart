@@ -1,9 +1,14 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/widgets/background/background_blur_glow.dart';
+import 'package:mobile/core/widgets/buttons/custom_button.dart';
 import 'package:mobile/features/auth/presentation/widgets/auth_header_icon.dart';
 import 'package:mobile/features/auth/presentation/widgets/custom_otp_field.dart';
+import 'package:mobile/features/auth/presentation/widgets/custom_rich_text_widget.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
 class OTPVerificationScreen extends StatefulWidget {
@@ -55,14 +60,14 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
         bottom: false,
         child: Column(
           children: [
-            SizedBox(height: 32.58.h),
             Expanded(
               child: Stack(
                 children: [
+                  CustomBackgroundGlow(top: -20, right: -10),
                   Positioned.fill(
                     child: SingleChildScrollView(
                       padding: EdgeInsets.only(
-                        top: 24.h,
+                        top: 37.h,
                         right: 24.w,
                         left: 24.w,
                         bottom: 84.h,
@@ -103,11 +108,24 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                   }
                                   return null;
                                 },
-                                onCompleted: (pin) {
-                                  _verifyCode();
-                                },
+                                // onCompleted: (pin) {
+                                //   _verifyCode();
+                                // },
                               ),
                             ),
+                          ),
+                          SizedBox(height: 56.h),
+                          CustomAppButton(
+                            text: t.otp.submit_button,
+                            onPressed: () {
+                              _verifyCode();
+                            },
+                          ),
+                          SizedBox(height: 48.h),
+                          CustomRichTextButton(
+                            firstText: t.otp.didnt_receive_code,
+                            secondText: t.otp.resend,
+                            onTap: () {},
                           ),
                         ],
                       ),
