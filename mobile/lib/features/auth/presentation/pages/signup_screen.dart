@@ -174,7 +174,11 @@ class _SignupScreenState extends State<SignupScreen> {
                                 SizedBox(height: 40.h),
                                 CustomAppButton(
                                   text: t.signup.signup_button,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    GoRouter.of(
+                                      context,
+                                    ).push(AppRouter.otpVerification);
+                                  },
                                 ),
                                 SizedBox(height: 40.h),
                                 CustomDividerWithText(

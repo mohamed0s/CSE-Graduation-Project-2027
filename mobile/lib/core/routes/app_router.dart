@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:mobile/features/auth/presentation/pages/login_screen.dart';
+import 'package:mobile/features/auth/presentation/pages/otp_verification_screen.dart';
 import 'package:mobile/features/auth/presentation/pages/signup_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
@@ -12,6 +13,7 @@ abstract class AppRouter {
   static const String home = '/home';
   static const String login = '/login';
   static const String signup = '/signup';
+  static const String otpVerification = '/otp-verification';
 
   static final GoRouter router = GoRouter(
     initialLocation: AppRouter.splash,
@@ -27,6 +29,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRouter.signup,
         builder: (context, state) => const SignupScreen(),
+      ),
+      GoRoute(
+        path: AppRouter.otpVerification,
+        builder: (context, state) => const OTPVerificationScreen(),
       ),
       GoRoute(
         path: AppRouter.onboarding,
