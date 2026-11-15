@@ -30,6 +30,16 @@ class _SignupScreenState extends State<SignupScreen> {
       TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
+  void dispose() {
+    _phoneNumberController.dispose();
+    _emailController.dispose();
+    _nameController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
@@ -134,7 +144,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   label: t.signup.email_label,
                                   labelStyle: context.bold14Black,
                                   controller: _emailController,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: TextInputType.emailAddress,
                                   hintText: t.signup.email_hint,
                                   prefixIcon: const Icon(
                                     Icons.email_outlined,
@@ -167,7 +177,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     if (value == null || value.trim().isEmpty) {
                                       return 'Please enter your password';
                                     }
-                                    if (value.trim().length < 8) {
+                                    if (value.length < 8) {
                                       return 'Password must be at least 8 characters long';
                                     }
                                     if (!RegExp(
@@ -193,8 +203,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     if (value == null || value.trim().isEmpty) {
                                       return 'Please confirm your password';
                                     }
-                                    if (value.trim() !=
-                                        _passwordController.text.trim()) {
+                                    if (value != _passwordController.text) {
                                       return 'Passwords do not match';
                                     }
                                     return null;
