@@ -1,14 +1,15 @@
 // ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/routes/app_router.dart';
 import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/utils/validators.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
+import 'package:mobile/core/widgets/dialogs/success_dialog.dart';
 import 'package:mobile/core/widgets/inputs/custom_text_form_field.dart';
-import 'package:mobile/features/auth/presentation/widgets/auth_header_icon.dart';
-import 'package:mobile/features/auth/presentation/widgets/auth_support_banner.dart';
 import 'package:mobile/features/auth/presentation/widgets/custom_rich_text_widget.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
@@ -155,7 +156,26 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                                 text: t
                                                     .reset_password
                                                     .change_password_button,
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  SuccessDialog.show(
+                                                    context,
+                                                    title: t
+                                                        .password_changed
+                                                        .title,
+                                                    subtitle: t
+                                                        .password_changed
+                                                        .subtitle,
+                                                    buttonText: t
+                                                        .password_changed
+                                                        .back_to_login,
+                                                    onButtonPressed: () {
+                                                      context.pop();
+                                                      context.go(
+                                                        AppRouter.login,
+                                                      );
+                                                    },
+                                                  );
+                                                },
                                               ),
                                             ],
                                           ),
