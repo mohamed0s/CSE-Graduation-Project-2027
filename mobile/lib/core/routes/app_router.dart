@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:mobile/features/auth/presentation/pages/forgot_password_screen.dart';
 import 'package:mobile/features/auth/presentation/pages/login_screen.dart';
 import 'package:mobile/features/auth/presentation/pages/otp_verification_screen.dart';
 import 'package:mobile/features/auth/presentation/pages/signup_screen.dart';
@@ -14,6 +15,7 @@ abstract class AppRouter {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String otpVerification = '/otp-verification';
+  static const String forgotPassword = '/forgot-password';
 
   static final GoRouter router = GoRouter(
     initialLocation: AppRouter.splash,
@@ -33,6 +35,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRouter.otpVerification,
         builder: (context, state) => const OTPVerificationScreen(),
+      ),
+      GoRoute(
+        path: AppRouter.forgotPassword,
+        builder: (context, state) => const ForgotPasswordScreen(),
       ),
       GoRoute(
         path: AppRouter.onboarding,

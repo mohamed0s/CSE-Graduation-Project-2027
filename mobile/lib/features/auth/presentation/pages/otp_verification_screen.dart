@@ -1,8 +1,10 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_element, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/routes/app_router.dart';
 import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
@@ -118,7 +120,8 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           CustomAppButton(
                             text: t.otp.submit_button,
                             onPressed: () {
-                              _verifyCode();
+                              //_verifyCode();
+                              GoRouter.of(context).go(AppRouter.forgotPassword);
                             },
                           ),
                           SizedBox(height: 48.h),
