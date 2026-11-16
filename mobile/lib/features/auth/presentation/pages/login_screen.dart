@@ -54,7 +54,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: Stack(
                     children: [
-                      const CustomBackgroundGlow(top: 0, right: 0),
+                      CustomBackgroundGlow.topRight(
+                        size: 320,
+                        preset: GlowPreset.medium,
+                      ),
                       Positioned.fill(
                         child: SingleChildScrollView(
                           padding: EdgeInsets.symmetric(

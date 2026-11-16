@@ -68,7 +68,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   child: Stack(
                     children: [
-                      const CustomBackgroundGlow(top: 0, right: 0),
+                      CustomBackgroundGlow.topRight(
+                        size: 320,
+                        preset: GlowPreset.medium,
+                      ),
                       Positioned.fill(
                         child: SingleChildScrollView(
                           padding: EdgeInsets.symmetric(
