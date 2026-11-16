@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/routes/app_router.dart';
 import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/utils/validators.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
@@ -143,7 +145,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                                 text: t
                                                     .forgot_password
                                                     .send_code_button,
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  GoRouter.of(context).push(
+                                                    AppRouter.resetPassword,
+                                                  );
+                                                },
                                               ),
                                             ],
                                           ),
