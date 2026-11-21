@@ -7,8 +7,9 @@ import 'package:mobile/core/i18n/strings.g.dart';
 import 'core/di/injection_container.dart' as di;
 
 void main() async {
+    WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
-  WidgetsFlutterBinding.ensureInitialized();
+
 
   // Set preferred orientations
   await SystemChrome.setPreferredOrientations([

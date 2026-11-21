@@ -47,6 +47,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final Translations$forgot_password$en forgot_password = Translations$forgot_password$en._(_root);
 	late final Translations$reset_password$en reset_password = Translations$reset_password$en._(_root);
 	late final Translations$password_changed$en password_changed = Translations$password_changed$en._(_root);
+	late final Translations$nav$en nav = Translations$nav$en._(_root);
 }
 
 // Path: login
@@ -253,6 +254,30 @@ class Translations$password_changed$en {
 	String get back_to_login => 'Back to Login';
 }
 
+// Path: nav
+class Translations$nav$en {
+	Translations$nav$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Home'
+	String get home => 'Home';
+
+	/// en: 'Services'
+	String get services => 'Services';
+
+	/// en: 'Finda Ai'
+	String get finda_ai => 'Finda Ai';
+
+	/// en: 'Orders'
+	String get orders => 'Orders';
+
+	/// en: 'Ahmed'
+	String get profile => 'Ahmed';
+}
+
 /// The flat map containing all translations for locale <en>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -311,6 +336,11 @@ extension on Translations {
 			'password_changed.title' => 'Password Changed Successfully! 🎉',
 			'password_changed.subtitle' => 'You can now log in using your new password',
 			'password_changed.back_to_login' => 'Back to Login',
+			'nav.home' => 'Home',
+			'nav.services' => 'Services',
+			'nav.finda_ai' => 'Finda Ai',
+			'nav.orders' => 'Orders',
+			'nav.profile' => 'Ahmed',
 			_ => null,
 		};
 	}

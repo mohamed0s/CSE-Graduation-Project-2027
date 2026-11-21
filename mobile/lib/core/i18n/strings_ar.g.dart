@@ -44,6 +44,7 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _Translations$forgot_password$ar forgot_password = _Translations$forgot_password$ar._(_root);
 	@override late final _Translations$reset_password$ar reset_password = _Translations$reset_password$ar._(_root);
 	@override late final _Translations$password_changed$ar password_changed = _Translations$password_changed$ar._(_root);
+	@override late final _Translations$nav$ar nav = _Translations$nav$ar._(_root);
 }
 
 // Path: login
@@ -150,6 +151,20 @@ class _Translations$password_changed$ar implements Translations$password_changed
 	@override String get back_to_login => 'ارجع لصفحة تسجيل الدخول';
 }
 
+// Path: nav
+class _Translations$nav$ar implements Translations$nav$en {
+	_Translations$nav$ar._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'الرئيسية';
+	@override String get services => 'الخدمات';
+	@override String get finda_ai => 'Finda Ai';
+	@override String get orders => 'طلباتي';
+	@override String get profile => 'أحمد';
+}
+
 /// The flat map containing all translations for locale <ar>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -208,6 +223,11 @@ extension on TranslationsAr {
 			'password_changed.title' => 'كلمة السر اتغيّرت بنجاح! 🎉',
 			'password_changed.subtitle' => 'دلوقتي تقدر تسجّل دخولك باستخدام كلمة السر الجديدة',
 			'password_changed.back_to_login' => 'ارجع لصفحة تسجيل الدخول',
+			'nav.home' => 'الرئيسية',
+			'nav.services' => 'الخدمات',
+			'nav.finda_ai' => 'Finda Ai',
+			'nav.orders' => 'طلباتي',
+			'nav.profile' => 'أحمد',
 			_ => null,
 		};
 	}

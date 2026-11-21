@@ -60,5 +60,12 @@
     "title": "Password Changed Successfully! 🎉",
     "subtitle": "You can now log in using your new password",
     "back_to_login": "Back to Login"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "finda_ai": "Finda Ai",
+    "orders": "Orders",
+    "profile": "Ahmed"
   }
 }
