@@ -1,12 +1,9 @@
-// ignore_for_file: unused_field
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/routes/app_router.dart';
-import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/theme/cubit/theme_cubit.dart';
 import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/core/utils/validators.dart';
@@ -27,7 +24,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String _dialCode = '+20';
+  String dialCode = '+20';
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -89,8 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Text(
                                       t.login.subtitle,
                                       style: context.regular16.copyWith(
-                                        color:
-                                            context.colorScheme.onSurfaceVariant,
+                                        color: context
+                                            .colorScheme
+                                            .onSurfaceVariant,
                                       ),
                                     ),
                                     SizedBox(height: 40.h),
@@ -104,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       hintText: 'EX: EGY => 1012345678',
                                       prefixIcon: CountryPickerPrefix(
                                         onCodeChanged: (code) {
-                                          _dialCode = code;
+                                          dialCode = code;
                                         },
                                       ),
                                       validator: Validators.phone,
@@ -125,7 +123,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                     SizedBox(height: 16.h),
                                     Align(
-                                      alignment: AlignmentDirectional.centerStart,
+                                      alignment:
+                                          AlignmentDirectional.centerStart,
                                       child: Text(
                                         t.login.forgot_password,
                                         style: context.bold14Primary,
@@ -150,7 +149,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       firstText: t.login.no_account,
                                       secondText: t.login.create_now,
                                       onTap: () {
-                                        GoRouter.of(context).push(AppRouter.signup);
+                                        GoRouter.of(
+                                          context,
+                                        ).push(AppRouter.signup);
                                       },
                                     ),
                                     SizedBox(height: 40.h),
@@ -166,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            // TODO: Remove test theme toggle
+            //! TODO: Remove test theme toggle
             PositionedDirectional(
               top: 4.h,
               end: 16.w,

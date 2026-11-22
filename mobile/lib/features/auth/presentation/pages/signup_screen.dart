@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/routes/app_router.dart';
 import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/core/utils/validators.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
@@ -45,7 +46,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundLight,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -55,7 +56,7 @@ class _SignupScreenState extends State<SignupScreen> {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryLight,
+                  color: context.colorScheme.surfaceContainerLow,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40.r),
                     topRight: Radius.circular(40.r),
