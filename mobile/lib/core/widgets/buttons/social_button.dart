@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
 class SocialButton extends StatelessWidget {
@@ -25,7 +26,7 @@ class SocialButton extends StatelessWidget {
         child: Container(
           height: 56.h,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: context.colorScheme.surface,
             borderRadius: BorderRadius.circular(20.r),
           ),
           child: Row(
@@ -35,7 +36,12 @@ class SocialButton extends StatelessWidget {
                   ? SvgPicture.asset(iconPath, width: 24.w, height: 24.h)
                   : Image.asset(iconPath, width: 24.w, height: 24.h),
               SizedBox(width: 12.w),
-              Text(text, style: context.bold14Black),
+              Text(
+                text,
+                style: context.bold14.copyWith(
+                  color: context.colorScheme.onSurface,
+                ),
+              ),
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
 class CustomDividerWithText extends StatelessWidget {
@@ -11,14 +12,27 @@ class CustomDividerWithText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(child: Divider(color: Colors.white, thickness: 1.5)),
-
+        Expanded(
+          child: Divider(
+            color: context.colorScheme.outlineVariant,
+            thickness: 1.5,
+          ),
+        ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
-          child: Text(text, style: context.semiBold14Secondary),
+          child: Text(
+            text,
+            style: context.semiBold14.copyWith(
+              color: context.colorScheme.onSurfaceVariant,
+            ),
+          ),
         ),
-
-        const Expanded(child: Divider(color: Colors.white, thickness: 1.5)),
+        Expanded(
+          child: Divider(
+            color: context.colorScheme.outlineVariant,
+            thickness: 1.5,
+          ),
+        ),
       ],
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
 class CustomRichTextButton extends StatelessWidget {
@@ -20,7 +21,9 @@ class CustomRichTextButton extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: '$firstText ',
-          style: context.regular16Secondary,
+          style: context.regular16.copyWith(
+            color: context.colorScheme.onSurfaceVariant,
+          ),
           children: [
             TextSpan(
               text: secondText,
