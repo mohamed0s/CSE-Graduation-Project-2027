@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:pinput/pinput.dart';
 
 class CustomOtpField extends StatelessWidget {
@@ -26,14 +26,14 @@ class CustomOtpField extends StatelessWidget {
       textStyle: TextStyle(
         fontSize: 20.sp,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: context.colorScheme.onSurface,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colorScheme.surface,
         borderRadius: BorderRadius.circular(28.r),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.3),
+            color: context.colorScheme.primary.withValues(alpha: 0.3),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -43,13 +43,13 @@ class CustomOtpField extends StatelessWidget {
 
     final focusedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration!.copyWith(
-        border: Border.all(color: AppColors.primary, width: 1.5),
+        border: Border.all(color: context.colorScheme.primary, width: 1.5),
       ),
     );
 
     final errorPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration!.copyWith(
-        border: Border.all(color: Colors.red, width: 1.5),
+        border: Border.all(color: context.colorScheme.error, width: 1.5),
       ),
     );
 

@@ -1,7 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 
 class CountryPickerPrefix extends StatelessWidget {
   final ValueChanged<String> onCodeChanged;
@@ -46,17 +46,21 @@ class CountryPickerPrefix extends StatelessWidget {
               style: TextStyle(
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w600,
-                color: const Color(0xFF5A6B7C),
+                color: context.colorScheme.onSurfaceVariant,
               ),
             ),
             SizedBox(width: 4.w),
             Icon(
               Icons.keyboard_arrow_down_rounded,
-              color: AppColors.secondary,
+              color: context.colorScheme.secondary,
               size: 20.sp,
             ),
             SizedBox(width: 8.w),
-            Container(height: 20.h, width: 1.w, color: Colors.grey.shade300),
+            Container(
+              height: 20.h,
+              width: 1.w,
+              color: context.colorScheme.outlineVariant,
+            ),
             SizedBox(width: 10.w),
           ],
         );

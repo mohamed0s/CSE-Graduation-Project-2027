@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/generated/style_atoms.dart';
-
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -30,10 +29,10 @@ class CustomBottomNavBar extends StatelessWidget {
           Container(
             height: 70.h,
             decoration: BoxDecoration(
-              color: AppColors.white,
+              color: context.colorScheme.surface,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.boxShadow..withValues(alpha: .8),
+                  color: context.colorScheme.shadow.withValues(alpha: 0.08),
                   blurRadius: 12,
                   offset: const Offset(0, -3),
                 ),
@@ -56,7 +55,6 @@ class CustomBottomNavBar extends StatelessWidget {
                   activeIcon: Icons.explore,
                   label: t.services,
                 ),
-            
                 SizedBox(width: 65.w),
                 _buildNavItem(
                   context: context,
@@ -75,8 +73,6 @@ class CustomBottomNavBar extends StatelessWidget {
               ],
             ),
           ),
-
-    
           Positioned(
             bottom: 11.h,
             child: GestureDetector(
@@ -89,17 +85,18 @@ class CustomBottomNavBar extends StatelessWidget {
                     height: 62.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      gradient: const LinearGradient(
+                      gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                        AppColors.primarycolor,
-                          AppColors.primary,
+                          context.colorScheme.primary.withValues(alpha: 0.8),
+                          context.colorScheme.primary,
                         ],
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.primary.withValues(alpha: .35),
+                          color: context.colorScheme.primary
+                              .withValues(alpha: .35),
                           blurRadius: 15,
                           spreadRadius: 2,
                           offset: const Offset(0, 4),
@@ -108,14 +105,16 @@ class CustomBottomNavBar extends StatelessWidget {
                     ),
                     child: Icon(
                       Icons.smart_toy_outlined,
-                      color: AppColors.white,
+                      color: context.colorScheme.onPrimary,
                       size: 30.sp,
                     ),
                   ),
                   SizedBox(height: 10.h),
                   Text(
                     t.finda_ai,
-                    style: context.semiBold12Primary, 
+                    style: context.semiBold12.copyWith(
+                      color: context.colorScheme.primary,
+                    ),
                   ),
                 ],
               ),
@@ -146,15 +145,21 @@ class CustomBottomNavBar extends StatelessWidget {
           children: [
             Icon(
               isSelected ? activeIcon : icon,
-              color: isSelected ? AppColors.primary : AppColors.iconColor,
+              color: isSelected
+                  ? context.colorScheme.primary
+                  : context.colorScheme.onSurfaceVariant,
               size: 30.sp,
             ),
             SizedBox(height: 4.h),
             Text(
               label,
               style: isSelected
-                  ? context.semiBold12Primary
-                  : context.medium12IconColor,
+                  ? context.semiBold12.copyWith(
+                      color: context.colorScheme.primary,
+                    )
+                  : context.medium12.copyWith(
+                      color: context.colorScheme.onSurfaceVariant,
+                    ),
             ),
           ],
         ),

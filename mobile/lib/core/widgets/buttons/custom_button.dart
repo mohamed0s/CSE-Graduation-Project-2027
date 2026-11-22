@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
 class CustomAppButton extends StatelessWidget {
@@ -19,24 +19,30 @@ class CustomAppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final effectiveBgColor = backgroundColor ?? context.colorScheme.primary;
+
     return SizedBox(
       width: double.infinity,
       height: 54.h,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? AppColors.primary,
+          backgroundColor: effectiveBgColor,
           elevation: 0,
           shape: RoundedRectangleBorder(
             side: BorderSide(
               color: backgroundColor == null
                   ? Colors.transparent
-                  : AppColors.primary,
+                  : context.colorScheme.primary,
             ),
             borderRadius: BorderRadius.circular(10.r),
           ),
         ),
         onPressed: onPressed,
-        child: Text(text, style: textStyle ?? context.bold18White),
+        child: Text(
+          text,
+          style: textStyle ??
+              context.bold18.copyWith(color: context.colorScheme.onPrimary),
+        ),
       ),
     );
   }

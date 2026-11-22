@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 
 class AuthSupportBanner extends StatelessWidget {
   final VoidCallback? onTap;
@@ -18,7 +18,7 @@ class AuthSupportBanner extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
         decoration: BoxDecoration(
-          color: AppColors.primary.withValues(alpha: 0.08),
+          color: context.colorScheme.primary.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(50.r),
         ),
         child: Row(
@@ -27,11 +27,11 @@ class AuthSupportBanner extends StatelessWidget {
               width: 40.w,
               height: 40.w,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: context.colorScheme.surface,
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.04),
+                    color: context.colorScheme.shadow.withValues(alpha: 0.04),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -39,7 +39,7 @@ class AuthSupportBanner extends StatelessWidget {
               ),
               child: Icon(
                 Icons.help_outline_rounded,
-                color: AppColors.textSub,
+                color: context.colorScheme.onSurfaceVariant,
                 size: 22.sp,
               ),
             ),
@@ -50,7 +50,7 @@ class AuthSupportBanner extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.textSub,
+                  color: context.colorScheme.onSurfaceVariant,
                   height: 1.4,
                 ),
               ),

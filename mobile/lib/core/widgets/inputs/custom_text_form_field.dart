@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/utils/extensions.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -76,7 +75,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       _isObscured
                           ? Icons.visibility_off_outlined
                           : Icons.visibility_outlined,
-                      color: const Color(0xFF8A9AAB),
+                      color: context.colorScheme.onSurfaceVariant,
                     ),
                     onPressed: () {
                       setState(() {
@@ -91,24 +90,23 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               horizontal: 16.w,
               vertical: 16.h,
             ),
-
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: context.colorScheme.outlineVariant),
+              borderSide: BorderSide(
+                color: context.colorScheme.outlineVariant,
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: const BorderSide(color: AppColors.primary),
+              borderSide: BorderSide(color: context.colorScheme.primary),
             ),
-
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: const BorderSide(color: Colors.red),
+              borderSide: BorderSide(color: context.colorScheme.error),
             ),
-
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: const BorderSide(color: Colors.red),
+              borderSide: BorderSide(color: context.colorScheme.error),
             ),
           ),
         ),
