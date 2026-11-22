@@ -68,5 +68,41 @@
     "finda_ai": "Finda Ai",
     "orders": "طلباتي",
     "profile": "أحمد"
-  }
+  },
+ 
+  "home": {
+    "app_name_ar": "فين ده",
+    "app_name_en": "Finda",
+    "discover": "اكتشف",
+    "finda_ai": "Finda Ai",
+    "my_orders": "طلباتي",
+    "craftsmen": "صنايعية",
+    "banner_badge": "كل خدمات $city في مكان واحد",
+    "banner_title": "كل الخدمات والأماكن اللي بتدور عليها في مكان واحد",
+    "banner_subtitle": "من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فين ده! هيسهّل عليك تلاقي اللي بتدور عليه.",
+    "quick_categories": "الخدمات والتصنيفات السريعة",
+    "view_all": "عرض الكل",
+    "all": "الكل",
+    "restaurants_food": "مطاعم واكل",
+    "maintenance_services": "خدمات وصيانة",
+    "search_in_city": "دور على اللي محتاجه في $city",
+    "list_view": "عرض القائمة",
+    "map_view": "الخريطة",
+    "search_hint": "قول ل فين ده انت محتاج ايه؟(مثال: سباك,شقة للايجار,برجر)",
+    "use_current_location": "استخدم موقعى الحالى لتحديد الاقرب",
+    "nearby_suggestions": "مقترحات قريبة منك",
+    "distance_km": "$distance كم",
+    "price_per_month": "$price ج / شهر"
+  },
+  
+"location":{
+  "select_location_hint": "حدد موقعك",
+    "choose_country_city": "اختر الدولة والمدينة",
+    "confirm_location": "تأكيد الموقع",
+    "location_permission_title": "تفعيل خدمة الموقع",
+    "location_permission_desc": "نحتاج إلى الوصول لموقعك لعرض الخريطة وتحديد موقعك الحالي والخدمات والأماكن القريبة منك بدقة.",
+    "enable_location_btn": "تفعيل الموقع",
+    "open_settings_btn": "فتح الإعدادات",
+    "cancel_btn": "إلغاء"
+}
 }

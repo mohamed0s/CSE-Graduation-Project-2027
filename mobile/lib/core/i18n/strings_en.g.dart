@@ -48,6 +48,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final Translations$reset_password$en reset_password = Translations$reset_password$en._(_root);
 	late final Translations$password_changed$en password_changed = Translations$password_changed$en._(_root);
 	late final Translations$nav$en nav = Translations$nav$en._(_root);
+	late final Translations$home$en home = Translations$home$en._(_root);
+	late final Translations$location$en location = Translations$location$en._(_root);
 }
 
 // Path: login
@@ -278,6 +280,114 @@ class Translations$nav$en {
 	String get profile => 'Ahmed';
 }
 
+// Path: home
+class Translations$home$en {
+	Translations$home$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'فين ده'
+	String get app_name_ar => 'فين ده';
+
+	/// en: 'Finda'
+	String get app_name_en => 'Finda';
+
+	/// en: 'Discover'
+	String get discover => 'Discover';
+
+	/// en: 'Finda AI'
+	String get finda_ai => 'Finda AI';
+
+	/// en: 'My Orders'
+	String get my_orders => 'My Orders';
+
+	/// en: 'Craftsmen'
+	String get craftsmen => 'Craftsmen';
+
+	/// en: 'All $city services in one place'
+	String banner_badge({required Object city}) => 'All ${city} services in one place';
+
+	/// en: 'All the services and places you're looking for in one place'
+	String get banner_title => 'All the services and places you\'re looking for in one place';
+
+	/// en: 'From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.'
+	String get banner_subtitle => 'From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.';
+
+	/// en: 'Quick Services & Categories'
+	String get quick_categories => 'Quick Services & Categories';
+
+	/// en: 'View All'
+	String get view_all => 'View All';
+
+	/// en: 'All'
+	String get all => 'All';
+
+	/// en: 'Restaurants & Food'
+	String get restaurants_food => 'Restaurants & Food';
+
+	/// en: 'Services & Maintenance'
+	String get maintenance_services => 'Services & Maintenance';
+
+	/// en: 'Search for what you need in $city'
+	String search_in_city({required Object city}) => 'Search for what you need in ${city}';
+
+	/// en: 'List View'
+	String get list_view => 'List View';
+
+	/// en: 'Map View'
+	String get map_view => 'Map View';
+
+	/// en: 'Tell Finda what you need (e.g., plumber, apartment for rent, burger)'
+	String get search_hint => 'Tell Finda what you need (e.g., plumber, apartment for rent, burger)';
+
+	/// en: 'Use my current location to find the nearest'
+	String get use_current_location => 'Use my current location to find the nearest';
+
+	/// en: 'Suggestions near you'
+	String get nearby_suggestions => 'Suggestions near you';
+
+	/// en: '$distance km'
+	String distance_km({required Object distance}) => '${distance} km';
+
+	/// en: '$price EGP / month'
+	String price_per_month({required Object price}) => '${price} EGP / month';
+}
+
+// Path: location
+class Translations$location$en {
+	Translations$location$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Select your location'
+	String get select_location_hint => 'Select your location';
+
+	/// en: 'Choose country and city'
+	String get choose_country_city => 'Choose country and city';
+
+	/// en: 'Confirm Location'
+	String get confirm_location => 'Confirm Location';
+
+	/// en: 'Enable Location Services'
+	String get location_permission_title => 'Enable Location Services';
+
+	/// en: 'We need access to your location to display the map and accurately find your current location, nearby services, and places.'
+	String get location_permission_desc => 'We need access to your location to display the map and accurately find your current location, nearby services, and places.';
+
+	/// en: 'Enable Location'
+	String get enable_location_btn => 'Enable Location';
+
+	/// en: 'Open Settings'
+	String get open_settings_btn => 'Open Settings';
+
+	/// en: 'Cancel'
+	String get cancel_btn => 'Cancel';
+}
+
 /// The flat map containing all translations for locale <en>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -341,6 +451,36 @@ extension on Translations {
 			'nav.finda_ai' => 'Finda Ai',
 			'nav.orders' => 'Orders',
 			'nav.profile' => 'Ahmed',
+			'home.app_name_ar' => 'فين ده',
+			'home.app_name_en' => 'Finda',
+			'home.discover' => 'Discover',
+			'home.finda_ai' => 'Finda AI',
+			'home.my_orders' => 'My Orders',
+			'home.craftsmen' => 'Craftsmen',
+			'home.banner_badge' => ({required Object city}) => 'All ${city} services in one place',
+			'home.banner_title' => 'All the services and places you\'re looking for in one place',
+			'home.banner_subtitle' => 'From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.',
+			'home.quick_categories' => 'Quick Services & Categories',
+			'home.view_all' => 'View All',
+			'home.all' => 'All',
+			'home.restaurants_food' => 'Restaurants & Food',
+			'home.maintenance_services' => 'Services & Maintenance',
+			'home.search_in_city' => ({required Object city}) => 'Search for what you need in ${city}',
+			'home.list_view' => 'List View',
+			'home.map_view' => 'Map View',
+			'home.search_hint' => 'Tell Finda what you need (e.g., plumber, apartment for rent, burger)',
+			'home.use_current_location' => 'Use my current location to find the nearest',
+			'home.nearby_suggestions' => 'Suggestions near you',
+			'home.distance_km' => ({required Object distance}) => '${distance} km',
+			'home.price_per_month' => ({required Object price}) => '${price} EGP / month',
+			'location.select_location_hint' => 'Select your location',
+			'location.choose_country_city' => 'Choose country and city',
+			'location.confirm_location' => 'Confirm Location',
+			'location.location_permission_title' => 'Enable Location Services',
+			'location.location_permission_desc' => 'We need access to your location to display the map and accurately find your current location, nearby services, and places.',
+			'location.enable_location_btn' => 'Enable Location',
+			'location.open_settings_btn' => 'Open Settings',
+			'location.cancel_btn' => 'Cancel',
 			_ => null,
 		};
 	}

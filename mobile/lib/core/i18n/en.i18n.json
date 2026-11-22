@@ -67,5 +67,42 @@
     "finda_ai": "Finda Ai",
     "orders": "Orders",
     "profile": "Ahmed"
+  },
+  
+  "home": {
+    "app_name_ar": "فين ده",
+    "app_name_en": "Finda",
+    "discover": "Discover",
+    "finda_ai": "Finda AI",
+    "my_orders": "My Orders",
+    "craftsmen": "Craftsmen",
+    "banner_badge": "All $city services in one place",
+    "banner_title": "All the services and places you're looking for in one place",
+    "banner_subtitle": "From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.",
+    "quick_categories": "Quick Services & Categories",
+    "view_all": "View All",
+    "all": "All",
+    "restaurants_food": "Restaurants & Food",
+    "maintenance_services": "Services & Maintenance",
+    "search_in_city": "Search for what you need in $city",
+    "list_view": "List View",
+    "map_view": "Map View",
+    "search_hint": "Tell Finda what you need (e.g., plumber, apartment for rent, burger)",
+    "use_current_location": "Use my current location to find the nearest",
+    "nearby_suggestions": "Suggestions near you",
+    "distance_km": "$distance km",
+    "price_per_month": "$price EGP / month"
+  },
+  
+  "location":{
+    "select_location_hint": "Select your location",
+    "choose_country_city": "Choose country and city",
+    "confirm_location": "Confirm Location",
+    "location_permission_title": "Enable Location Services",
+    "location_permission_desc": "We need access to your location to display the map and accurately find your current location, nearby services, and places.",
+    "enable_location_btn": "Enable Location",
+    "open_settings_btn": "Open Settings",
+    "cancel_btn": "Cancel"
   }
+
 }
