@@ -45,6 +45,8 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _Translations$reset_password$ar reset_password = _Translations$reset_password$ar._(_root);
 	@override late final _Translations$password_changed$ar password_changed = _Translations$password_changed$ar._(_root);
 	@override late final _Translations$nav$ar nav = _Translations$nav$ar._(_root);
+	@override late final _Translations$home$ar home = _Translations$home$ar._(_root);
+	@override late final _Translations$location$ar location = _Translations$location$ar._(_root);
 }
 
 // Path: login
@@ -165,6 +167,54 @@ class _Translations$nav$ar implements Translations$nav$en {
 	@override String get profile => 'أحمد';
 }
 
+// Path: home
+class _Translations$home$ar implements Translations$home$en {
+	_Translations$home$ar._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get app_name_ar => 'فين ده';
+	@override String get app_name_en => 'Finda';
+	@override String get discover => 'اكتشف';
+	@override String get finda_ai => 'Finda Ai';
+	@override String get my_orders => 'طلباتي';
+	@override String get craftsmen => 'صنايعية';
+	@override String banner_badge({required Object city}) => 'كل خدمات ${city} في مكان واحد';
+	@override String get banner_title => 'كل الخدمات والأماكن اللي بتدور عليها في مكان واحد';
+	@override String get banner_subtitle => 'من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فين ده! هيسهّل عليك تلاقي اللي بتدور عليه.';
+	@override String get quick_categories => 'الخدمات والتصنيفات السريعة';
+	@override String get view_all => 'عرض الكل';
+	@override String get all => 'الكل';
+	@override String get restaurants_food => 'مطاعم واكل';
+	@override String get maintenance_services => 'خدمات وصيانة';
+	@override String search_in_city({required Object city}) => 'دور على اللي محتاجه في ${city}';
+	@override String get list_view => 'عرض القائمة';
+	@override String get map_view => 'الخريطة';
+	@override String get search_hint => 'قول ل فين ده انت محتاج ايه؟(مثال: سباك,شقة للايجار,برجر)';
+	@override String get use_current_location => 'استخدم موقعى الحالى لتحديد الاقرب';
+	@override String get nearby_suggestions => 'مقترحات قريبة منك';
+	@override String distance_km({required Object distance}) => '${distance} كم';
+	@override String price_per_month({required Object price}) => '${price} ج / شهر';
+}
+
+// Path: location
+class _Translations$location$ar implements Translations$location$en {
+	_Translations$location$ar._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get select_location_hint => 'حدد موقعك';
+	@override String get choose_country_city => 'اختر الدولة والمدينة';
+	@override String get confirm_location => 'تأكيد الموقع';
+	@override String get location_permission_title => 'تفعيل خدمة الموقع';
+	@override String get location_permission_desc => 'نحتاج إلى الوصول لموقعك لعرض الخريطة وتحديد موقعك الحالي والخدمات والأماكن القريبة منك بدقة.';
+	@override String get enable_location_btn => 'تفعيل الموقع';
+	@override String get open_settings_btn => 'فتح الإعدادات';
+	@override String get cancel_btn => 'إلغاء';
+}
+
 /// The flat map containing all translations for locale <ar>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -228,6 +278,36 @@ extension on TranslationsAr {
 			'nav.finda_ai' => 'Finda Ai',
 			'nav.orders' => 'طلباتي',
 			'nav.profile' => 'أحمد',
+			'home.app_name_ar' => 'فين ده',
+			'home.app_name_en' => 'Finda',
+			'home.discover' => 'اكتشف',
+			'home.finda_ai' => 'Finda Ai',
+			'home.my_orders' => 'طلباتي',
+			'home.craftsmen' => 'صنايعية',
+			'home.banner_badge' => ({required Object city}) => 'كل خدمات ${city} في مكان واحد',
+			'home.banner_title' => 'كل الخدمات والأماكن اللي بتدور عليها في مكان واحد',
+			'home.banner_subtitle' => 'من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فين ده! هيسهّل عليك تلاقي اللي بتدور عليه.',
+			'home.quick_categories' => 'الخدمات والتصنيفات السريعة',
+			'home.view_all' => 'عرض الكل',
+			'home.all' => 'الكل',
+			'home.restaurants_food' => 'مطاعم واكل',
+			'home.maintenance_services' => 'خدمات وصيانة',
+			'home.search_in_city' => ({required Object city}) => 'دور على اللي محتاجه في ${city}',
+			'home.list_view' => 'عرض القائمة',
+			'home.map_view' => 'الخريطة',
+			'home.search_hint' => 'قول ل فين ده انت محتاج ايه؟(مثال: سباك,شقة للايجار,برجر)',
+			'home.use_current_location' => 'استخدم موقعى الحالى لتحديد الاقرب',
+			'home.nearby_suggestions' => 'مقترحات قريبة منك',
+			'home.distance_km' => ({required Object distance}) => '${distance} كم',
+			'home.price_per_month' => ({required Object price}) => '${price} ج / شهر',
+			'location.select_location_hint' => 'حدد موقعك',
+			'location.choose_country_city' => 'اختر الدولة والمدينة',
+			'location.confirm_location' => 'تأكيد الموقع',
+			'location.location_permission_title' => 'تفعيل خدمة الموقع',
+			'location.location_permission_desc' => 'نحتاج إلى الوصول لموقعك لعرض الخريطة وتحديد موقعك الحالي والخدمات والأماكن القريبة منك بدقة.',
+			'location.enable_location_btn' => 'تفعيل الموقع',
+			'location.open_settings_btn' => 'فتح الإعدادات',
+			'location.cancel_btn' => 'إلغاء',
 			_ => null,
 		};
 	}

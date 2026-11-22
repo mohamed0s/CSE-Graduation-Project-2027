@@ -53,10 +53,7 @@ class _MainLayoutScreenState extends State<HomeLayoutScreen> {
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: IndexedStack(
-        index: _currentIndex,
-        children: screens,
-      ),
+      body: IndexedStack(index: _currentIndex, children: screens),
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _currentIndex,
         onTap: (index) {
