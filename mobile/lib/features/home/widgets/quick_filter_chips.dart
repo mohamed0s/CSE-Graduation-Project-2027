@@ -21,8 +21,7 @@ class QuickFilterChips extends StatelessWidget {
     final chips = [
       (label: t.discover, icon: Icons.search),
       (label: t.finda_ai, icon: Icons.smart_toy_outlined),
-      (label: t.my_orders, icon: Icons.shopping_cart_outlined),
-      (label: t.craftsmen, icon: null),
+      (label: t.craftsmen, icon: Icons.explore_outlined),
     ];
 
     return Container(
@@ -51,14 +50,14 @@ class QuickFilterChips extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  if (chip.icon != null) ...[
-                    Icon(
-                      chip.icon,
-                      size: 16.sp,
-                      color: isSelected ? AppColors.white : AppColors.textSub,
-                    ),
-                    SizedBox(width: 6.w),
-                  ],
+                  ...[
+                  Icon(
+                    chip.icon,
+                    size: 16.sp,
+                    color: isSelected ? AppColors.white : AppColors.textSub,
+                  ),
+                  SizedBox(width: 6.w),
+                ],
                   Text(
                     chip.label,
                     style: isSelected

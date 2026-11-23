@@ -303,8 +303,8 @@ class Translations$home$en {
 	/// en: 'My Orders'
 	String get my_orders => 'My Orders';
 
-	/// en: 'Craftsmen'
-	String get craftsmen => 'Craftsmen';
+	/// en: 'services'
+	String get craftsmen => 'services';
 
 	/// en: 'All $city services in one place'
 	String banner_badge({required Object city}) => 'All ${city} services in one place';
@@ -353,6 +353,12 @@ class Translations$home$en {
 
 	/// en: '$price EGP / month'
 	String price_per_month({required Object price}) => '${price} EGP / month';
+
+	/// en: 'clinics & Health'
+	String get health => 'clinics & Health';
+
+	/// en: 'Real estate & Rentals'
+	String get real_estate => 'Real estate & Rentals';
 }
 
 // Path: location
@@ -459,7 +465,7 @@ extension on Translations {
 			'home.discover' => 'Discover',
 			'home.finda_ai' => 'Finda AI',
 			'home.my_orders' => 'My Orders',
-			'home.craftsmen' => 'Craftsmen',
+			'home.craftsmen' => 'services',
 			'home.banner_badge' => ({required Object city}) => 'All ${city} services in one place',
 			'home.banner_title' => 'All the services and places you\'re looking for in one place',
 			'home.banner_subtitle' => 'From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.',
@@ -476,6 +482,8 @@ extension on Translations {
 			'home.nearby_suggestions' => 'Suggestions near you',
 			'home.distance_km' => ({required Object distance}) => '${distance} km',
 			'home.price_per_month' => ({required Object price}) => '${price} EGP / month',
+			'home.health' => 'clinics & Health',
+			'home.real_estate' => 'Real estate & Rentals',
 			'location.select_location_hint' => 'Select your location',
 			'location.choose_country_city' => 'Choose country and city',
 			'location.confirm_location' => 'Confirm Location',

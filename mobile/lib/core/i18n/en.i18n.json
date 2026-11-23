@@ -75,7 +75,7 @@
     "discover": "Discover",
     "finda_ai": "Finda AI",
     "my_orders": "My Orders",
-    "craftsmen": "Craftsmen",
+    "craftsmen": "services",
     "banner_badge": "All $city services in one place",
     "banner_title": "All the services and places you're looking for in one place",
     "banner_subtitle": "From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.",
@@ -91,7 +91,9 @@
     "use_current_location": "Use my current location to find the nearest",
     "nearby_suggestions": "Suggestions near you",
     "distance_km": "$distance km",
-    "price_per_month": "$price EGP / month"
+    "price_per_month": "$price EGP / month",
+    "health":"clinics & Health",
+    "real_estate":"Real estate & Rentals"
   },
   
   "location":{

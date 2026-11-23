@@ -45,7 +45,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 _buildNavItem(
                   context: context,
                   index: 0,
-                  icon: Icons.home_outlined,
+                  icon: Icons.home_mini_rounded,
                   activeIcon: Icons.home_outlined,
                   label: t.home,
                 ),

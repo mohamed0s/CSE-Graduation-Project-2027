@@ -179,7 +179,7 @@ class _Translations$home$ar implements Translations$home$en {
 	@override String get discover => 'اكتشف';
 	@override String get finda_ai => 'Finda Ai';
 	@override String get my_orders => 'طلباتي';
-	@override String get craftsmen => 'صنايعية';
+	@override String get craftsmen => 'خدمات';
 	@override String banner_badge({required Object city}) => 'كل خدمات ${city} في مكان واحد';
 	@override String get banner_title => 'كل الخدمات والأماكن اللي بتدور عليها في مكان واحد';
 	@override String get banner_subtitle => 'من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فين ده! هيسهّل عليك تلاقي اللي بتدور عليه.';
@@ -196,6 +196,8 @@ class _Translations$home$ar implements Translations$home$en {
 	@override String get nearby_suggestions => 'مقترحات قريبة منك';
 	@override String distance_km({required Object distance}) => '${distance} كم';
 	@override String price_per_month({required Object price}) => '${price} ج / شهر';
+	@override String get health => 'عيادات وصحه';
+	@override String get real_estate => 'عقارات و ايجارات';
 }
 
 // Path: location
@@ -284,7 +286,7 @@ extension on TranslationsAr {
 			'home.discover' => 'اكتشف',
 			'home.finda_ai' => 'Finda Ai',
 			'home.my_orders' => 'طلباتي',
-			'home.craftsmen' => 'صنايعية',
+			'home.craftsmen' => 'خدمات',
 			'home.banner_badge' => ({required Object city}) => 'كل خدمات ${city} في مكان واحد',
 			'home.banner_title' => 'كل الخدمات والأماكن اللي بتدور عليها في مكان واحد',
 			'home.banner_subtitle' => 'من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فين ده! هيسهّل عليك تلاقي اللي بتدور عليه.',
@@ -301,6 +303,8 @@ extension on TranslationsAr {
 			'home.nearby_suggestions' => 'مقترحات قريبة منك',
 			'home.distance_km' => ({required Object distance}) => '${distance} كم',
 			'home.price_per_month' => ({required Object price}) => '${price} ج / شهر',
+			'home.health' => 'عيادات وصحه',
+			'home.real_estate' => 'عقارات و ايجارات',
 			'location.select_location_hint' => 'حدد موقعك',
 			'location.choose_country_city' => 'اختر الدولة والمدينة',
 			'location.confirm_location' => 'تأكيد الموقع',

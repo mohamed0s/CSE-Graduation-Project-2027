@@ -24,6 +24,8 @@ class QuickCategoriesSection extends StatelessWidget {
       (label: t.all, emoji: null, icon: Icons.grid_view_rounded),
       (label: t.restaurants_food, emoji: '🍔', icon: null),
       (label: t.maintenance_services, emoji: '🔧', icon: null),
+      (label: t.health, emoji: '🏥', icon: null),
+      (label: t.real_estate, emoji: '🏡', icon: null),
     ];
 
     return Column(

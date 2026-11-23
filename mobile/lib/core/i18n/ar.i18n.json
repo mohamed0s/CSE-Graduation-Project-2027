@@ -76,7 +76,7 @@
     "discover": "اكتشف",
     "finda_ai": "Finda Ai",
     "my_orders": "طلباتي",
-    "craftsmen": "صنايعية",
+    "craftsmen": "خدمات",
     "banner_badge": "كل خدمات $city في مكان واحد",
     "banner_title": "كل الخدمات والأماكن اللي بتدور عليها في مكان واحد",
     "banner_subtitle": "من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فين ده! هيسهّل عليك تلاقي اللي بتدور عليه.",
@@ -92,7 +92,9 @@
     "use_current_location": "استخدم موقعى الحالى لتحديد الاقرب",
     "nearby_suggestions": "مقترحات قريبة منك",
     "distance_km": "$distance كم",
-    "price_per_month": "$price ج / شهر"
+    "price_per_month": "$price ج / شهر",
+    "health":"عيادات وصحه",
+    "real_estate":"عقارات و ايجارات"
   },
   
 "location":{
