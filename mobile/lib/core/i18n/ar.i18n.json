@@ -103,6 +103,7 @@
     "location_permission_desc": "نحتاج إلى الوصول لموقعك لعرض الخريطة وتحديد موقعك الحالي والخدمات والأماكن القريبة منك بدقة.",
     "enable_location_btn": "تفعيل الموقع",
     "open_settings_btn": "فتح الإعدادات",
-    "cancel_btn": "إلغاء"
+    "cancel_btn": "إلغاء",
+    "city_Error":"غير محدد"
 }
 }

@@ -26,11 +26,11 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: AppRouter.splash,
-        builder: (context, state) => const SplashScreen(),
+        builder: (context, state) => const HomeLayoutScreen(),
       ),
       GoRoute(
         path: AppRouter.login,
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) => const HomeLayoutScreen(),
       ),
       GoRoute(
         path: AppRouter.signup,

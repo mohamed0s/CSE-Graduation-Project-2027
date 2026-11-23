@@ -9,11 +9,7 @@ class SuggestionCard extends StatelessWidget {
   final SuggestionItemModel item;
   final VoidCallback? onTap;
 
-  const SuggestionCard({
-    super.key,
-    required this.item,
-    this.onTap,
-  });
+  const SuggestionCard({super.key, required this.item, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +33,16 @@ class SuggestionCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                     
-                        SizedBox(
-                          width: 150.w,
-                          child: Text(
-                            item.title,
-                            style: context.bold14TextMain,
-                          maxLines: 3,
-                          
-                                                ),
-                        ),
+                      Flexible(
+                        child: Text(item.title, style: context.bold14TextMain),
+                      ),
                       SizedBox(width: 8.w),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 8.w,
+                          vertical: 3.h,
+                        ),
                         decoration: BoxDecoration(
                           color: item.badgeBgColor,
                           borderRadius: BorderRadius.circular(8.r),
@@ -60,8 +51,7 @@ class SuggestionCard extends StatelessWidget {
                               : null,
                         ),
                         child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
                               item.categoryLabel,
@@ -73,7 +63,10 @@ class SuggestionCard extends StatelessWidget {
                               ),
                             ),
                             SizedBox(width: 4.w),
-                            Text(item.categoryEmoji, style: TextStyle(fontSize: 11.sp)),
+                            Text(
+                              item.categoryEmoji,
+                              style: TextStyle(fontSize: 11.sp),
+                            ),
                           ],
                         ),
                       ),
@@ -81,10 +74,7 @@ class SuggestionCard extends StatelessWidget {
                   ),
                   SizedBox(height: 6.h),
                   if (item.subtitle.isNotEmpty)
-                    Text(
-                      item.subtitle,
-                      style: context.regular12TextSub,
-                    ),
+                    Text(item.subtitle, style: context.regular12TextSub),
                   if (item.price != null) ...[
                     SizedBox(height: 4.h),
                     Text(
@@ -102,11 +92,16 @@ class SuggestionCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 4.h,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.danger.withValues(alpha: .1),
                     borderRadius: BorderRadius.circular(20.r),
-                    border: Border.all(color: AppColors.danger.withValues(alpha: .5)),
+                    border: Border.all(
+                      color: AppColors.danger.withValues(alpha: .5),
+                    ),
                   ),
                   child: Text(
                     t.distance_km(distance: item.distance),
@@ -114,10 +109,7 @@ class SuggestionCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8.h),
-                Text(
-                  item.location,
-                  style: context.regular12TextSub,
-                ),
+                Text(item.location, style: context.regular12TextSub),
               ],
             ),
           ],

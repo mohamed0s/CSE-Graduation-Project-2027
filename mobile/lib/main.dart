@@ -5,6 +5,8 @@ import 'package:mobile/app.dart';
 import 'package:mobile/core/cache/cache_helper.dart';
 import 'package:mobile/core/i18n/controller/locale_cubit.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/location/cubit/location_cubit.dart';
+import 'package:mobile/core/location/repository/location_repository.dart';
 import 'package:mobile/core/theme/cubit/theme_cubit.dart';
 import 'core/di/injection_container.dart' as di;
 
@@ -14,7 +16,8 @@ void main() async {
 
   // Set preferred orientations
   await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,    DeviceOrientation.portraitDown,
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
   ]);
 
   // Set system UI overlay style
@@ -36,6 +39,7 @@ void main() async {
       providers: [
         BlocProvider(create: (context) => LocaleCubit()),
         BlocProvider(create: (context) => ThemeCubit()),
+        BlocProvider(create: (context) => LocationCubit(LocationRepositoryImpl())),
       ],
       child: TranslationProvider(child: const MyApp()),
     ),

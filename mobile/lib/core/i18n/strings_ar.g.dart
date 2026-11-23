@@ -213,6 +213,7 @@ class _Translations$location$ar implements Translations$location$en {
 	@override String get enable_location_btn => 'تفعيل الموقع';
 	@override String get open_settings_btn => 'فتح الإعدادات';
 	@override String get cancel_btn => 'إلغاء';
+	@override String get city_Error => 'غير محدد';
 }
 
 /// The flat map containing all translations for locale <ar>.
@@ -308,6 +309,7 @@ extension on TranslationsAr {
 			'location.enable_location_btn' => 'تفعيل الموقع',
 			'location.open_settings_btn' => 'فتح الإعدادات',
 			'location.cancel_btn' => 'إلغاء',
+			'location.city_Error' => 'غير محدد',
 			_ => null,
 		};
 	}

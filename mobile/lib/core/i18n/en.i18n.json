@@ -102,7 +102,8 @@
     "location_permission_desc": "We need access to your location to display the map and accurately find your current location, nearby services, and places.",
     "enable_location_btn": "Enable Location",
     "open_settings_btn": "Open Settings",
-    "cancel_btn": "Cancel"
+    "cancel_btn": "Cancel",
+    "city_Error":"not selected"
   }
 
 }

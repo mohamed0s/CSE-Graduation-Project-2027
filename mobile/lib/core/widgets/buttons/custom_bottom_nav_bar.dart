@@ -22,12 +22,13 @@ class CustomBottomNavBar extends StatelessWidget {
     final t = context.t.nav;
 
     return SizedBox(
-      height: 95.h,
+      height: 70.h,
       child: Stack(
         alignment: Alignment.bottomCenter,
         clipBehavior: Clip.none,
         children: [
           Container(
+            clipBehavior: Clip.none,
             height: 70.h,
             decoration: BoxDecoration(
               color: AppColors.white,

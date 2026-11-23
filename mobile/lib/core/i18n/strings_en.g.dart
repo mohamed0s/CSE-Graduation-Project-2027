@@ -386,6 +386,9 @@ class Translations$location$en {
 
 	/// en: 'Cancel'
 	String get cancel_btn => 'Cancel';
+
+	/// en: 'not selected'
+	String get city_Error => 'not selected';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -481,6 +484,7 @@ extension on Translations {
 			'location.enable_location_btn' => 'Enable Location',
 			'location.open_settings_btn' => 'Open Settings',
 			'location.cancel_btn' => 'Cancel',
+			'location.city_Error' => 'not selected',
 			_ => null,
 		};
 	}

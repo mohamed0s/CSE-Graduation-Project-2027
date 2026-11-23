@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mobile/core/api/api_consumer.dart';
 import 'package:mobile/core/api/dio_api_consumer.dart';
+import 'package:mobile/core/location/cubit/location_cubit.dart';
+import 'package:mobile/core/location/repository/location_repository.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../network/network_info.dart';
 import '../api/api_interceptors.dart';
@@ -51,6 +53,14 @@ Future<void> init() async {
   ///
   /// DioApiConsumer depends on the Dio instance registered above.
   getIt.registerLazySingleton<ApiConsumer>(() => DioApiConsumer(getIt()));
+
+  //! Location
+  getIt.registerLazySingleton<LocationRepository>(
+    () => LocationRepositoryImpl(),
+  );
+  getIt.registerFactory<LocationCubit>(
+    () => LocationCubit(getIt<LocationRepository>()),
+  );
 
   // Register your dependencies here
   // Example:

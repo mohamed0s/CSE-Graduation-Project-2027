@@ -29,6 +29,7 @@ class _MainLayoutScreenState extends State<HomeLayoutScreen> {
     ];
 
     return Scaffold(
+     
       backgroundColor: AppColors.backgroundLight,
       body: IndexedStack(
         index: _currentIndex,

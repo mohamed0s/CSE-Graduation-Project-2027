@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class SuggestionItemModel {
   final String title;
   final String subtitle;
+  final String? price;
   final String location;
   final String distance;
   final String categoryLabel;
@@ -10,11 +11,13 @@ class SuggestionItemModel {
   final Color badgeBgColor;
   final Color badgeTextColor;
   final Color? badgeBorderColor;
-  final String? price; 
+  final double latitude;
+  final double longitude;
 
   const SuggestionItemModel({
     required this.title,
     required this.subtitle,
+    this.price,
     required this.location,
     required this.distance,
     required this.categoryLabel,
@@ -22,6 +25,7 @@ class SuggestionItemModel {
     required this.badgeBgColor,
     required this.badgeTextColor,
     this.badgeBorderColor,
-    this.price,
+    required this.latitude,
+    required this.longitude,
   });
 }
