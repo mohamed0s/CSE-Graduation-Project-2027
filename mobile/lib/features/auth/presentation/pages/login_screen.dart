@@ -113,9 +113,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                         color: context.colorScheme.onSurface,
                                       ),
                                       controller: _passwordController,
-                                      prefixIcon: const Icon(
+                                      prefixIcon: Icon(
                                         Icons.lock_outline_rounded,
-                                        color: Color(0xFF8A9AAB),
+                                        color: context
+                                            .colorScheme
+                                            .onSurfaceVariant,
                                       ),
                                       isPassword: true,
                                       label: t.login.password_label,
@@ -127,7 +129,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                           AlignmentDirectional.centerStart,
                                       child: Text(
                                         t.login.forgot_password,
-                                        style: context.bold14Primary,
+                                        style: context.bold14.copyWith(
+                                          color: context.colorScheme.primary,
+                                        ),
                                       ),
                                     ),
                                     SizedBox(height: 40.h),

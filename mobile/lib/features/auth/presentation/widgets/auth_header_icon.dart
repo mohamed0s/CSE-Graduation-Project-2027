@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 
 class AuthHeaderIcon extends StatelessWidget {
   final double size;
@@ -21,10 +21,10 @@ class AuthHeaderIcon extends StatelessWidget {
       height: size.w,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: AppColors.primary.withValues(alpha: 0.1),
+        color: context.colorScheme.primary.withValues(alpha: 0.1),
       ),
       child: Center(
-        child: Icon(icon, size: iconSize.sp, color: AppColors.primary),
+        child: Icon(icon, size: iconSize.sp, color: context.colorScheme.primary),
       ),
     );
   }

@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/routes/app_router.dart';
-import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/core/utils/validators.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
@@ -33,6 +32,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   void dispose() {
     _phoneNumberController.dispose();
@@ -88,23 +88,29 @@ class _SignupScreenState extends State<SignupScreen> {
                               children: [
                                 Text(
                                   t.signup.title,
-                                  style: context.bold36Black,
+                                  style: context.bold36.copyWith(
+                                    color: context.colorScheme.onSurface,
+                                  ),
                                 ),
                                 SizedBox(height: 8.h),
                                 Text(
                                   t.signup.subtitle,
-                                  style: context.regular16Secondary,
+                                  style: context.regular16.copyWith(
+                                    color: context.colorScheme.onSurfaceVariant,
+                                  ),
                                 ),
                                 SizedBox(height: 40.h),
                                 CustomTextFormField(
                                   label: t.signup.name_label,
-                                  labelStyle: context.bold14Black,
+                                  labelStyle: context.bold14.copyWith(
+                                    color: context.colorScheme.onSurface,
+                                  ),
                                   controller: _nameController,
                                   keyboardType: TextInputType.text,
                                   hintText: t.signup.name_hint,
-                                  prefixIcon: const Icon(
+                                  prefixIcon: Icon(
                                     Icons.person_outline_rounded,
-                                    color: Color(0xFF8A9AAB),
+                                    color: context.colorScheme.onSurfaceVariant,
                                   ),
                                   validator: Validators.combine([
                                     (value) => Validators.required(
@@ -121,7 +127,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(
                                   label: t.login.phone_label,
-                                  labelStyle: context.bold14Black,
+                                  labelStyle: context.bold14.copyWith(
+                                    color: context.colorScheme.onSurface,
+                                  ),
                                   controller: _phoneNumberController,
                                   keyboardType: TextInputType.phone,
                                   hintText: 'EX: EGY => 1012345678',
@@ -135,23 +143,27 @@ class _SignupScreenState extends State<SignupScreen> {
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(
                                   label: t.signup.email_label,
-                                  labelStyle: context.bold14Black,
+                                  labelStyle: context.bold14.copyWith(
+                                    color: context.colorScheme.onSurface,
+                                  ),
                                   controller: _emailController,
                                   keyboardType: TextInputType.emailAddress,
                                   hintText: t.signup.email_hint,
-                                  prefixIcon: const Icon(
+                                  prefixIcon: Icon(
                                     Icons.email_outlined,
-                                    color: Color(0xFF8A9AAB),
+                                    color: context.colorScheme.onSurfaceVariant,
                                   ),
                                   validator: Validators.email,
                                 ),
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(
-                                  labelStyle: context.bold14Black,
+                                  labelStyle: context.bold14.copyWith(
+                                    color: context.colorScheme.onSurface,
+                                  ),
                                   controller: _passwordController,
-                                  prefixIcon: const Icon(
+                                  prefixIcon: Icon(
                                     Icons.lock_outline_rounded,
-                                    color: Color(0xFF8A9AAB),
+                                    color: context.colorScheme.onSurfaceVariant,
                                   ),
                                   isPassword: true,
                                   label: t.signup.password_label,
@@ -160,11 +172,13 @@ class _SignupScreenState extends State<SignupScreen> {
                                 ),
                                 SizedBox(height: 16.h),
                                 CustomTextFormField(
-                                  labelStyle: context.bold14Black,
+                                  labelStyle: context.bold14.copyWith(
+                                    color: context.colorScheme.onSurface,
+                                  ),
                                   controller: _confirmPasswordController,
-                                  prefixIcon: const Icon(
+                                  prefixIcon: Icon(
                                     Icons.lock_outline_rounded,
-                                    color: Color(0xFF8A9AAB),
+                                    color: context.colorScheme.onSurfaceVariant,
                                   ),
                                   isPassword: true,
                                   label: t.signup.confirm_password_label,

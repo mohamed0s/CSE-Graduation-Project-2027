@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
@@ -53,11 +53,11 @@ class SuccessDialog extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 40.h),
         decoration: BoxDecoration(
-          color: AppColors.primaryLight,
+          color: context.colorScheme.surfaceContainerLow,
           borderRadius: BorderRadius.circular(40.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.08),
+              color: context.colorScheme.shadow.withValues(alpha: 0.08),
               blurRadius: 24,
               offset: const Offset(0, 8),
             ),
@@ -69,13 +69,17 @@ class SuccessDialog extends StatelessWidget {
             SizedBox(height: 16.h),
             Text(
               title,
-              style: context.bold36Black,
+              style: context.bold36.copyWith(
+                color: context.colorScheme.onSurface,
+              ),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20.h),
             Text(
               subtitle,
-              style: context.regular16Secondary,
+              style: context.regular16.copyWith(
+                color: context.colorScheme.onSurfaceVariant,
+              ),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 36.h),
@@ -86,7 +90,8 @@ class SuccessDialog extends StatelessWidget {
                 footerText!,
                 style: TextStyle(
                   fontSize: 12.sp,
-                  color: AppColors.textSub.withValues(alpha: 0.75),
+                  color: context.colorScheme.onSurfaceVariant
+                      .withValues(alpha: 0.75),
                 ),
                 textAlign: TextAlign.center,
               ),

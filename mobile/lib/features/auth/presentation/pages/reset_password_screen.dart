@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/routes/app_router.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/core/utils/validators.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
@@ -35,15 +35,21 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         title: Text(t.reset_password.app_bar_title),
-        backgroundColor: AppColors.backgroundLight,
-        foregroundColor: AppColors.textSub,
-        titleTextStyle: context.bold18TextSub,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        foregroundColor: context.colorScheme.onSurface,
+        titleTextStyle: context.bold18.copyWith(
+          color: context.colorScheme.onSurface,
+        ),
         centerTitle: false,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: AppColors.textSub, size: 20),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: context.colorScheme.onSurface,
+            size: 20,
+          ),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -73,13 +79,17 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             SizedBox(height: 15.h),
                             Text(
                               t.reset_password.title,
-                              style: context.bold36Black,
+                              style: context.bold36.copyWith(
+                                color: context.colorScheme.onSurface,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 24.h),
                             Text(
                               t.reset_password.subtitle,
-                              style: context.regular18Secondary,
+                              style: context.regular18.copyWith(
+                                color: context.colorScheme.onSurfaceVariant,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 48.h),
@@ -91,16 +101,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withOpacity(0.08),
+                                      color: context.colorScheme.shadow
+                                          .withValues(alpha: 0.08),
                                       blurRadius: 16.r,
                                       spreadRadius: 2.r,
-                                      //offset: const Offset(0, -4),
                                     ),
                                   ],
-                                  color: AppColors.white,
+                                  color: context.colorScheme.surfaceContainerLow,
                                   borderRadius: BorderRadius.circular(40.r),
                                 ),
-
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(40.r),
                                   child: Stack(
@@ -118,11 +127,18 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                           child: Column(
                                             children: [
                                               CustomTextFormField(
-                                                labelStyle: context.bold14Black,
+                                                labelStyle: context.bold14
+                                                    .copyWith(
+                                                      color: context
+                                                          .colorScheme
+                                                          .onSurface,
+                                                    ),
                                                 controller: _passwordController,
-                                                prefixIcon: const Icon(
+                                                prefixIcon: Icon(
                                                   Icons.lock_outline_rounded,
-                                                  color: Color(0xFF8A9AAB),
+                                                  color: context
+                                                      .colorScheme
+                                                      .onSurfaceVariant,
                                                 ),
                                                 isPassword: true,
                                                 label: t
@@ -133,12 +149,19 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                               ),
                                               SizedBox(height: 16.h),
                                               CustomTextFormField(
-                                                labelStyle: context.bold14Black,
+                                                labelStyle: context.bold14
+                                                    .copyWith(
+                                                      color: context
+                                                          .colorScheme
+                                                          .onSurface,
+                                                    ),
                                                 controller:
                                                     _confirmPasswordController,
-                                                prefixIcon: const Icon(
+                                                prefixIcon: Icon(
                                                   Icons.lock_outline_rounded,
-                                                  color: Color(0xFF8A9AAB),
+                                                  color: context
+                                                      .colorScheme
+                                                      .onSurfaceVariant,
                                                 ),
                                                 isPassword: true,
                                                 label: t

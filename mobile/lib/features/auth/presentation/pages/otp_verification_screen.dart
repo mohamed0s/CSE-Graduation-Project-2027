@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/routes/app_router.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/core/widgets/background/background_blur_glow.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
 import 'package:mobile/features/auth/presentation/widgets/auth_header_icon.dart';
@@ -44,15 +44,21 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         title: Text(t.otp.app_bar_title),
-        backgroundColor: AppColors.backgroundLight,
-        foregroundColor: AppColors.textSub,
-        titleTextStyle: context.bold18TextSub,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        foregroundColor: context.colorScheme.onSurface,
+        titleTextStyle: context.bold18.copyWith(
+          color: context.colorScheme.onSurface,
+        ),
         centerTitle: false,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: AppColors.textSub, size: 20),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: context.colorScheme.onSurface,
+            size: 20,
+          ),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -86,13 +92,17 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           SizedBox(height: 48.h),
                           Text(
                             t.otp.phone_title,
-                            style: context.bold36Black,
+                            style: context.bold36.copyWith(
+                              color: context.colorScheme.onSurface,
+                            ),
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 24.h),
                           Text(
                             t.otp.phone_subtitle,
-                            style: context.regular18Secondary,
+                            style: context.regular18.copyWith(
+                              color: context.colorScheme.onSurfaceVariant,
+                            ),
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 48.h),
@@ -110,9 +120,6 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                   }
                                   return null;
                                 },
-                                // onCompleted: (pin) {
-                                //   _verifyCode();
-                                // },
                               ),
                             ),
                           ),
@@ -120,8 +127,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           CustomAppButton(
                             text: t.otp.submit_button,
                             onPressed: () {
-                              //_verifyCode();
-                              GoRouter.of(context).go(AppRouter.forgotPassword);
+                              context.push(AppRouter.forgotPassword);
                             },
                           ),
                           SizedBox(height: 48.h),
