@@ -71,7 +71,7 @@ class _HomeAppBarState extends State<HomeAppBar>
         children: [
           Text(
             t.app_name_ar,
-            style: context.bold16.copyWith(color: colorScheme.primary),
+            style: context.bold14.copyWith(color: colorScheme.primary),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 6.w),
@@ -83,7 +83,7 @@ class _HomeAppBarState extends State<HomeAppBar>
           ),
           Text(
             t.app_name_en,
-            style: context.bold14.copyWith(color: colorScheme.onSurface),
+            style: context.bold16.copyWith(color: colorScheme.onSurface),
           ),
 
           SizedBox(width: 8.w),

@@ -62,7 +62,7 @@ class SuggestionCard extends StatelessWidget {
                             Text(
                               item.categoryLabel,
                               style: TextStyle(
-                                fontFamily: 'Almarai',
+                                fontFamily: 'Tajawal',
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w600,
                                 color: item.badgeTextColor,
