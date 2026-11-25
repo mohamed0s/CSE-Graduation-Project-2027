@@ -50,6 +50,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final Translations$nav$en nav = Translations$nav$en._(_root);
 	late final Translations$home$en home = Translations$home$en._(_root);
 	late final Translations$location$en location = Translations$location$en._(_root);
+	late final Translations$services$en services = Translations$services$en._(_root);
 }
 
 // Path: login
@@ -378,8 +379,8 @@ class Translations$home$en {
 	/// en: 'Public services'
 	String get Public_services => 'Public services';
 
-	/// en: 'Shops'
-	String get Shops => 'Shops';
+	/// en: 'Shops & Shopping'
+	String get Shops => 'Shops & Shopping';
 
 	/// en: 'Education'
 	String get Education => 'Education';
@@ -422,6 +423,90 @@ class Translations$location$en {
 
 	/// en: 'not selected'
 	String get city_Error => 'not selected';
+}
+
+// Path: services
+class Translations$services$en {
+	Translations$services$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Explore Categories'
+	String get explore_categories => 'Explore Categories';
+
+	/// en: 'Restaurants & Cafés'
+	String get food_sub => 'Restaurants & Cafés';
+
+	/// en: '420+ Places'
+	String get food_badge => '420+ Places';
+
+	/// en: 'Clinics & Hospitals'
+	String get health_sub => 'Clinics & Hospitals';
+
+	/// en: '420+ Places'
+	String get health_badge => '420+ Places';
+
+	/// en: 'Flats & Motorcycles'
+	String get rentals_sub => 'Flats & Motorcycles';
+
+	/// en: '420+ Places'
+	String get rentals_badge => '420+ Places';
+
+	/// en: 'Plumbing & AC'
+	String get repairs_sub => 'Plumbing & AC';
+
+	/// en: '420+ Techs'
+	String get repairs_badge => '420+ Techs';
+
+	/// en: 'ATMs & Banks'
+	String get banks_sub => 'ATMs & Banks';
+
+	/// en: '420+ Places'
+	String get banks_badge => '420+ Places';
+
+	/// en: 'Groceries & Produce'
+	String get supermarket_sub => 'Groceries & Produce';
+
+	/// en: '420+ Shops'
+	String get supermarket_badge => '420+ Shops';
+
+	/// en: 'Post, Civil Registry & Notary'
+	String get gov_sub => 'Post, Civil Registry & Notary';
+
+	/// en: '48 Offices'
+	String get gov_badge => '48 Offices';
+
+	/// en: '$city Shopping Guide'
+	String shops_sub({required Object city}) => '${city} Shopping Guide';
+
+	/// en: '420+ Places'
+	String get shops_badge => '420+ Places';
+
+	/// en: 'Tutors, Centres & Courses'
+	String get edu_sub => 'Tutors, Centres & Courses';
+
+	/// en: '120+ Centres'
+	String get edu_badge => '120+ Centres';
+
+	/// en: 'Mosques, Churches & Charities'
+	String get worship_sub => 'Mosques, Churches & Charities';
+
+	/// en: '90+ Places'
+	String get worship_badge => '90+ Places';
+
+	/// en: '$city Emergency Numbers'
+	String emergency_title({required Object city}) => '${city} Emergency Numbers';
+
+	/// en: 'Police, Ambulance, Gas & Electricity'
+	String get emergency_sub => 'Police, Ambulance, Gas & Electricity';
+
+	/// en: 'Emergency Guide'
+	String get emergency_btn => 'Emergency Guide';
+
+	/// en: 'Search A Service Or Tell Us What You Need'
+	String get search_hint => 'Search A Service Or Tell Us What You Need';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -517,7 +602,7 @@ extension on Translations {
 			'home.Banks_ATMs' => 'Banks & ATMs',
 			'home.Supermarkets' => 'Supermarkets',
 			'home.Public_services' => 'Public services',
-			'home.Shops' => 'Shops',
+			'home.Shops' => 'Shops & Shopping',
 			'home.Education' => 'Education',
 			'home.Places_of_worship' => 'Places of worship',
 			'location.select_location_hint' => 'Select your location',
@@ -529,6 +614,31 @@ extension on Translations {
 			'location.open_settings_btn' => 'Open Settings',
 			'location.cancel_btn' => 'Cancel',
 			'location.city_Error' => 'not selected',
+			'services.explore_categories' => 'Explore Categories',
+			'services.food_sub' => 'Restaurants & Cafés',
+			'services.food_badge' => '420+ Places',
+			'services.health_sub' => 'Clinics & Hospitals',
+			'services.health_badge' => '420+ Places',
+			'services.rentals_sub' => 'Flats & Motorcycles',
+			'services.rentals_badge' => '420+ Places',
+			'services.repairs_sub' => 'Plumbing & AC',
+			'services.repairs_badge' => '420+ Techs',
+			'services.banks_sub' => 'ATMs & Banks',
+			'services.banks_badge' => '420+ Places',
+			'services.supermarket_sub' => 'Groceries & Produce',
+			'services.supermarket_badge' => '420+ Shops',
+			'services.gov_sub' => 'Post, Civil Registry & Notary',
+			'services.gov_badge' => '48 Offices',
+			'services.shops_sub' => ({required Object city}) => '${city} Shopping Guide',
+			'services.shops_badge' => '420+ Places',
+			'services.edu_sub' => 'Tutors, Centres & Courses',
+			'services.edu_badge' => '120+ Centres',
+			'services.worship_sub' => 'Mosques, Churches & Charities',
+			'services.worship_badge' => '90+ Places',
+			'services.emergency_title' => ({required Object city}) => '${city} Emergency Numbers',
+			'services.emergency_sub' => 'Police, Ambulance, Gas & Electricity',
+			'services.emergency_btn' => 'Emergency Guide',
+			'services.search_hint' => 'Search A Service Or Tell Us What You Need',
 			_ => null,
 		};
 	}

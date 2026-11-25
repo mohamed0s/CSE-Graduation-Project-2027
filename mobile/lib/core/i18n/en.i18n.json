@@ -101,7 +101,7 @@
     "Banks_ATMs":"Banks & ATMs",
     "Supermarkets":"Supermarkets",
     "Public_services":"Public services",
-    "Shops":"Shops",
+    "Shops":"Shops & Shopping",
     "Education":"Education",
     "Places_of_worship":"Places of worship"
   },
@@ -116,6 +116,34 @@
     "open_settings_btn": "Open Settings",
     "cancel_btn": "Cancel",
     "city_Error":"not selected"
+  },
+
+  "services": {
+    "explore_categories": "Explore Categories",
+    "food_sub": "Restaurants & Cafés",
+    "food_badge": "420+ Places",
+    "health_sub": "Clinics & Hospitals",
+    "health_badge": "420+ Places",
+    "rentals_sub": "Flats & Motorcycles",
+    "rentals_badge": "420+ Places",
+    "repairs_sub": "Plumbing & AC",
+    "repairs_badge": "420+ Techs",
+    "banks_sub": "ATMs & Banks",
+    "banks_badge": "420+ Places",
+    "supermarket_sub": "Groceries & Produce",
+    "supermarket_badge": "420+ Shops",
+    "gov_sub": "Post, Civil Registry & Notary",
+    "gov_badge": "48 Offices",
+    "shops_sub": "$city Shopping Guide",
+    "shops_badge": "420+ Places",
+    "edu_sub": "Tutors, Centres & Courses",
+    "edu_badge": "120+ Centres",
+    "worship_sub": "Mosques, Churches & Charities",
+    "worship_badge": "90+ Places",
+    "emergency_title": "$city Emergency Numbers",
+    "emergency_sub": "Police, Ambulance, Gas & Electricity",
+    "emergency_btn": "Emergency Guide",
+    "search_hint": "Search A Service Or Tell Us What You Need"
   }
 
 }

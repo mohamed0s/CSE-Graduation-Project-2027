@@ -3,6 +3,7 @@ import 'package:mobile/core/i18n/strings.g.dart';
 import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/core/widgets/buttons/custom_bottom_nav_bar.dart';
 import 'package:mobile/features/home/views/home_screen.dart';
+import 'package:mobile/features/services/views/services_screen.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
 class HomeLayoutScreen extends StatefulWidget {
@@ -13,20 +14,15 @@ class HomeLayoutScreen extends StatefulWidget {
 }
 
 class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
-   int _currentIndex = 0;
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     final t = context.t.nav;
 
     final List<Widget> screens = [
-  HomeScreen(),
-      Center(
-        child: Text(
-          t.services,
-          style: context.bold20.copyWith(color: context.colorScheme.primary),
-        ),
-      ),
+      HomeScreen(),
+      ServicesScreen(),
       Center(
         child: Text(
           t.finda_ai,

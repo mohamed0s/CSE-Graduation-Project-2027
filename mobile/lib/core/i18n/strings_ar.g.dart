@@ -47,6 +47,7 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _Translations$nav$ar nav = _Translations$nav$ar._(_root);
 	@override late final _Translations$home$ar home = _Translations$home$ar._(_root);
 	@override late final _Translations$location$ar location = _Translations$location$ar._(_root);
+	@override late final _Translations$services$ar services = _Translations$services$ar._(_root);
 }
 
 // Path: login
@@ -204,7 +205,7 @@ class _Translations$home$ar implements Translations$home$en {
 	@override String get Banks_ATMs => 'بنوك و ATM';
 	@override String get Supermarkets => 'سوبر ماركت';
 	@override String get Public_services => 'مصالح حكومية';
-	@override String get Shops => 'محلات';
+	@override String get Shops => 'محلات وتسوق';
 	@override String get Education => 'خدمات تعليمية';
 	@override String get Places_of_worship => 'اماكن دينية';
 }
@@ -225,6 +226,40 @@ class _Translations$location$ar implements Translations$location$en {
 	@override String get open_settings_btn => 'فتح الإعدادات';
 	@override String get cancel_btn => 'إلغاء';
 	@override String get city_Error => 'غير محدد';
+}
+
+// Path: services
+class _Translations$services$ar implements Translations$services$en {
+	_Translations$services$ar._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get explore_categories => 'استكشف التصنيفات';
+	@override String get food_sub => 'مطاعم، كافيهات';
+	@override String get food_badge => '+420 مكان';
+	@override String get health_sub => 'عيادات ومستشفيات';
+	@override String get health_badge => '+420 مكان';
+	@override String get rentals_sub => 'شقق، موتوسيكلات';
+	@override String get rentals_badge => '+420 مكان';
+	@override String get repairs_sub => 'سباكة، تبريد وتكييف';
+	@override String get repairs_badge => '+420 فنى';
+	@override String get banks_sub => 'صراف آلى، بنوك';
+	@override String get banks_badge => '+420 مكان';
+	@override String get supermarket_sub => 'هايبر، بقالة، خضروات';
+	@override String get supermarket_badge => '+420 متجر';
+	@override String get gov_sub => 'بريد، سجل مدنى، توثيق';
+	@override String get gov_badge => '48 مصلحة';
+	@override String shops_sub({required Object city}) => 'دليل محلات ${city}';
+	@override String get shops_badge => '+420 مكان';
+	@override String get edu_sub => 'مدرسين، سناتر، كورسات';
+	@override String get edu_badge => '+120 مركز';
+	@override String get worship_sub => 'مساجد، كنائس، جمعيات';
+	@override String get worship_badge => '+90 مكان';
+	@override String emergency_title({required Object city}) => 'أرقام الطوارئ بـ ${city}';
+	@override String get emergency_sub => 'النجدة، الإسعاف، طوارئ الغاز والكهرباء';
+	@override String get emergency_btn => 'دليل الطوارئ';
+	@override String get search_hint => 'دور على خدمة معينة أو قول انت عايز ايه';
 }
 
 /// The flat map containing all translations for locale <ar>.
@@ -320,7 +355,7 @@ extension on TranslationsAr {
 			'home.Banks_ATMs' => 'بنوك و ATM',
 			'home.Supermarkets' => 'سوبر ماركت',
 			'home.Public_services' => 'مصالح حكومية',
-			'home.Shops' => 'محلات',
+			'home.Shops' => 'محلات وتسوق',
 			'home.Education' => 'خدمات تعليمية',
 			'home.Places_of_worship' => 'اماكن دينية',
 			'location.select_location_hint' => 'حدد موقعك',
@@ -332,6 +367,31 @@ extension on TranslationsAr {
 			'location.open_settings_btn' => 'فتح الإعدادات',
 			'location.cancel_btn' => 'إلغاء',
 			'location.city_Error' => 'غير محدد',
+			'services.explore_categories' => 'استكشف التصنيفات',
+			'services.food_sub' => 'مطاعم، كافيهات',
+			'services.food_badge' => '+420 مكان',
+			'services.health_sub' => 'عيادات ومستشفيات',
+			'services.health_badge' => '+420 مكان',
+			'services.rentals_sub' => 'شقق، موتوسيكلات',
+			'services.rentals_badge' => '+420 مكان',
+			'services.repairs_sub' => 'سباكة، تبريد وتكييف',
+			'services.repairs_badge' => '+420 فنى',
+			'services.banks_sub' => 'صراف آلى، بنوك',
+			'services.banks_badge' => '+420 مكان',
+			'services.supermarket_sub' => 'هايبر، بقالة، خضروات',
+			'services.supermarket_badge' => '+420 متجر',
+			'services.gov_sub' => 'بريد، سجل مدنى، توثيق',
+			'services.gov_badge' => '48 مصلحة',
+			'services.shops_sub' => ({required Object city}) => 'دليل محلات ${city}',
+			'services.shops_badge' => '+420 مكان',
+			'services.edu_sub' => 'مدرسين، سناتر، كورسات',
+			'services.edu_badge' => '+120 مركز',
+			'services.worship_sub' => 'مساجد، كنائس، جمعيات',
+			'services.worship_badge' => '+90 مكان',
+			'services.emergency_title' => ({required Object city}) => 'أرقام الطوارئ بـ ${city}',
+			'services.emergency_sub' => 'النجدة، الإسعاف، طوارئ الغاز والكهرباء',
+			'services.emergency_btn' => 'دليل الطوارئ',
+			'services.search_hint' => 'دور على خدمة معينة أو قول انت عايز ايه',
 			_ => null,
 		};
 	}

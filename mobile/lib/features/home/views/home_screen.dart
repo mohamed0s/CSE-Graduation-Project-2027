@@ -102,7 +102,7 @@ class _HomeViewState extends State<_HomeView> {
                           onLocationTap: () {
                             homeCubit.setPendingSwitchToMap(false);
                             context.read<LocationCubit>().fetchCurrentLocation(
-                              showDialogOnDenied: false,
+                              showDialogOnDenied: false,forceRefresh: true
                             );
                           },
                           onNotificationTap: () { context.read<ThemeCubit>().toggleTheme();},

@@ -102,7 +102,7 @@
     "Banks_ATMs":"بنوك و ATM",
     "Supermarkets":"سوبر ماركت",
     "Public_services":"مصالح حكومية",
-    "Shops":"محلات",
+    "Shops":"محلات وتسوق",
     "Education":"خدمات تعليمية",
     "Places_of_worship":"اماكن دينية"
   },
@@ -117,5 +117,33 @@
     "open_settings_btn": "فتح الإعدادات",
     "cancel_btn": "إلغاء",
     "city_Error":"غير محدد"
-}
+},
+
+"services": {
+    "explore_categories": "استكشف التصنيفات",
+    "food_sub": "مطاعم، كافيهات",
+    "food_badge": "+420 مكان",
+    "health_sub": "عيادات ومستشفيات",
+    "health_badge": "+420 مكان",
+    "rentals_sub": "شقق، موتوسيكلات",
+    "rentals_badge": "+420 مكان",
+    "repairs_sub": "سباكة، تبريد وتكييف",
+    "repairs_badge": "+420 فنى",
+    "banks_sub": "صراف آلى، بنوك",
+    "banks_badge": "+420 مكان",
+    "supermarket_sub": "هايبر، بقالة، خضروات",
+    "supermarket_badge": "+420 متجر",
+    "gov_sub": "بريد، سجل مدنى، توثيق",
+    "gov_badge": "48 مصلحة",
+    "shops_sub": "دليل محلات $city",
+    "shops_badge": "+420 مكان",
+    "edu_sub": "مدرسين، سناتر، كورسات",
+    "edu_badge": "+120 مركز",
+    "worship_sub": "مساجد، كنائس، جمعيات",
+    "worship_badge": "+90 مكان",
+    "emergency_title": "أرقام الطوارئ بـ $city",
+    "emergency_sub": "النجدة، الإسعاف، طوارئ الغاز والكهرباء",
+    "emergency_btn": "دليل الطوارئ",
+    "search_hint": "دور على خدمة معينة أو قول انت عايز ايه"
+  }
 }

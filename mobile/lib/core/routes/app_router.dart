@@ -5,6 +5,7 @@ import 'package:mobile/features/auth/presentation/pages/login_screen.dart';
 import 'package:mobile/features/auth/presentation/pages/otp_verification_screen.dart';
 import 'package:mobile/features/auth/presentation/pages/reset_password_screen.dart';
 import 'package:mobile/features/auth/presentation/pages/signup_screen.dart';
+import 'package:mobile/features/services/views/services_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/home/views/home_screen.dart';
@@ -20,6 +21,7 @@ abstract class AppRouter {
   static const String forgotPassword = '/forgot-password';
   static const String resetPassword = '/reset-password';
   static const String homelayout = '/home_layout';
+  static const String services = '/services';
 
   static final GoRouter router = GoRouter(
     initialLocation: AppRouter.homelayout,
@@ -59,6 +61,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRouter.homelayout,
         builder: (context, state) => const HomeLayoutScreen(),
+      ),
+      GoRoute(
+        path: AppRouter.services,
+        builder: (context, state) => const ServicesScreen(),
       ),
     ],
   );
