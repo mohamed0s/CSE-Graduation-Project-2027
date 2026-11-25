@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
 class QuickCategoriesSection extends StatelessWidget {
   final int selectedCategoryIndex;
   final ValueChanged<int> onCategorySelect;
-  final VoidCallback onViewAllTap;
+
 
   const QuickCategoriesSection({
     super.key,
     required this.selectedCategoryIndex,
     required this.onCategorySelect,
-    required this.onViewAllTap,
+    
   });
 
   @override
   Widget build(BuildContext context) {
     final t = context.t.home;
+    final colorScheme = context.colorScheme;
+    final bgColor = Theme.of(context).scaffoldBackgroundColor;
 
     final categories = [
       (label: t.all, emoji: null, icon: Icons.grid_view_rounded),
       (label: t.restaurants_food, emoji: '🍔', icon: null),
       (label: t.maintenance_services, emoji: '🔧', icon: null),
-      (label: t.health, emoji: '🏥', icon: null),
-      (label: t.real_estate, emoji: '🏡', icon: null),
+      (label: t.Health_clinics, emoji: '🏥', icon: null),
+      (label: t.Property_rentals, emoji: '🏡', icon: null),
+      (label: t.Banks_ATMs, emoji: '🏦', icon: null),
+      (label: t.Supermarkets, emoji: '🍫', icon: null),
+      (label: t.Public_services, emoji: '🏛', icon: null),
+      (label: t.Shops, emoji: '🛒', icon: null),
+      (label: t.Places_of_worship, emoji: '🕌', icon: null),
     ];
 
     return Column(
@@ -35,11 +42,11 @@ class QuickCategoriesSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(t.quick_categories, style: context.bold14TextMain),
-              GestureDetector(
-                onTap: onViewAllTap,
-                child: Text(t.view_all, style: context.semiBold12TextLink),
+              Text(
+                t.quick_categories,
+                style: context.bold14.copyWith(color: colorScheme.onSurface),
               ),
+          
             ],
           ),
         ),
@@ -60,12 +67,14 @@ class QuickCategoriesSection extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 14.w),
                   decoration: BoxDecoration(
-                    color: isSelected ? AppColors.primary : AppColors.white,
+                    color: isSelected
+                        ? colorScheme.primary
+                        : colorScheme.surface,
                     borderRadius: BorderRadius.circular(14.r),
                     border: Border.all(
                       color: isSelected
-                          ? AppColors.primary
-                          : AppColors.borderLight,
+                          ? colorScheme.primary
+                          : colorScheme.outlineVariant,
                     ),
                   ),
                   child: Row(
@@ -75,14 +84,14 @@ class QuickCategoriesSection extends StatelessWidget {
                           item.icon,
                           size: 18.sp,
                           color: isSelected
-                              ? AppColors.warningLight
-                              : AppColors.primary,
+                              ? colorScheme.onPrimary
+                              : colorScheme.primary,
                         )
                       else if (item.emoji != null)
                         Container(
                           padding: EdgeInsets.all(4.w),
                           decoration: BoxDecoration(
-                            color: AppColors.backgroundLight,
+                            color: bgColor,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Text(
@@ -94,8 +103,12 @@ class QuickCategoriesSection extends StatelessWidget {
                       Text(
                         item.label,
                         style: isSelected
-                            ? context.semiBold12White
-                            : context.semiBold12TextMain,
+                            ? context.semiBold12.copyWith(
+                                color: colorScheme.onPrimary,
+                              )
+                            : context.semiBold12.copyWith(
+                                color: colorScheme.onSurface,
+                              ),
                       ),
                     ],
                   ),

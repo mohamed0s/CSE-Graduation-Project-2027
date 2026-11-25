@@ -71,15 +71,19 @@
   },
  
   "home": {
-    "app_name_ar": "فين ده",
+    "app_name_ar": "فيندا",
     "app_name_en": "Finda",
     "discover": "اكتشف",
     "finda_ai": "Finda Ai",
     "my_orders": "طلباتي",
     "craftsmen": "خدمات",
-    "banner_badge": "كل خدمات $city في مكان واحد",
-    "banner_title": "كل الخدمات والأماكن اللي بتدور عليها في مكان واحد",
-    "banner_subtitle": "من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فين ده! هيسهّل عليك تلاقي اللي بتدور عليه.",
+    "banner_badge1": "كل خدمات $city في مكان واحد",
+    "banner_title1": "كل الخدمات والأماكن اللي بتدور عليها في مكان واحد",
+    "banner_subtitle1": "من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فيندا! هيسهّل عليك تلاقي اللي بتدور عليه.",
+    "banner_badge2":"اكتشف كل اللى حواليك",
+    "banner_title2": "محتاج ايه في $city",
+    "banner_subtitle2": "فيندا! بيفهم إنت محتاج إيه، بيدورلك على الأنسب حواليك، وبيساعدك تنفذ الطلب وتتابعه لغاية ما يخلص.",
+    
     "quick_categories": "الخدمات والتصنيفات السريعة",
     "view_all": "عرض الكل",
     "all": "الكل",
@@ -93,8 +97,14 @@
     "nearby_suggestions": "مقترحات قريبة منك",
     "distance_km": "$distance كم",
     "price_per_month": "$price ج / شهر",
-    "health":"عيادات وصحه",
-    "real_estate":"عقارات و ايجارات"
+    "Health_clinics":"صحة وعيادات",
+    "Property_rentals":"ايجارات وعقارات",
+    "Banks_ATMs":"بنوك و ATM",
+    "Supermarkets":"سوبر ماركت",
+    "Public_services":"مصالح حكومية",
+    "Shops":"محلات",
+    "Education":"خدمات تعليمية",
+    "Places_of_worship":"اماكن دينية"
   },
   
 "location":{

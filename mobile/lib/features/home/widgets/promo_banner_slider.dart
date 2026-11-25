@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
-import 'package:mobile/generated/style_atoms.dart';
+import 'package:mobile/core/utils/extensions.dart';
+import 'promo_banner_card.dart';
 
 class PromoBannerSlider extends StatefulWidget {
   final String cityName;
@@ -26,6 +26,20 @@ class _PromoBannerSliderState extends State<PromoBannerSlider> {
   @override
   Widget build(BuildContext context) {
     final t = context.t.home;
+    final colorScheme = context.colorScheme;
+
+    final banners = [
+      PromoBannerCard(
+        badgeText: t.banner_badge1(city: widget.cityName),
+        title: t.banner_title1,
+        subtitle: t.banner_subtitle1,
+      ),
+      PromoBannerCard(
+        badgeText: t.banner_badge2,
+        title: t.banner_title2(city: widget.cityName),
+        subtitle: t.banner_subtitle2,
+      ),
+    ];
 
     return Column(
       children: [
@@ -33,78 +47,15 @@ class _PromoBannerSliderState extends State<PromoBannerSlider> {
           height: 255.h,
           child: PageView.builder(
             controller: _pageController,
-            itemCount: 2,
+            itemCount: banners.length,
             onPageChanged: (index) => setState(() => _currentPage = index),
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.symmetric(horizontal: 6.w),
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.r),
-                  color: AppColors.white,
-                  gradient: RadialGradient(
-                    center: LocaleSettings.currentLocale == AppLocale.ar? Alignment.topLeft:Alignment.topRight,
-                    radius: .5,
-                    colors: [
-                      AppColors.primary.withValues(alpha: 0.5),
-                      AppColors.primary.withValues(alpha: 0.35),
-                      AppColors.primary.withValues(alpha: 0.2),
-                      AppColors.primary.withValues(alpha: 0.0),
-                    ],
-                    stops: const [0.0, 0.45, 0.8, 1.0],
-                  ),
-                  border: Border.all(color: AppColors.borderLight),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 14.w,
-                        vertical: 5.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryLight,
-                        borderRadius: BorderRadius.circular(20.r),
-                        border: Border.all(
-                          color: AppColors.primary.withValues(alpha: .3),
-                        ),
-                      ),
-                      child: Text(
-                        t.banner_badge(city: widget.cityName),
-                        style: context.semiBold12TextLink,
-                      ),
-                    ),
-                    SizedBox(height: 8.h),
-
-                    Text(
-                      t.banner_title,
-                      textAlign: TextAlign.center,
-                      style: context.bold18TextMain,
-                    ),
-                    SizedBox(height: 5.h),
-
-                    Text('🗺️', style: TextStyle(fontSize: 22.sp)),
-                    SizedBox(height: 5.h),
-
-                    Text(
-                      t.banner_subtitle,
-                      textAlign: TextAlign.center,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: context.regular12TextSub,
-                    ),
-                  ],
-                ),
-              );
-            },
+            itemBuilder: (context, index) => banners[index],
           ),
         ),
         SizedBox(height: 10.h),
-
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(2, (index) {
+          children: List.generate(banners.length, (index) {
             final isActive = _currentPage == index;
             return AnimatedContainer(
               duration: const Duration(milliseconds: 250),
@@ -113,8 +64,8 @@ class _PromoBannerSliderState extends State<PromoBannerSlider> {
               height: 6.h,
               decoration: BoxDecoration(
                 color: isActive
-                    ? AppColors.primary
-                    : AppColors.iconColor.withValues(alpha: .4),
+                    ? colorScheme.primary
+                    : colorScheme.onSurfaceVariant.withValues(alpha: .4),
                 borderRadius: BorderRadius.circular(6.r),
               ),
             );

@@ -22,7 +22,7 @@ abstract class AppRouter {
   static const String homelayout = '/home_layout';
 
   static final GoRouter router = GoRouter(
-    initialLocation: AppRouter.login,
+    initialLocation: AppRouter.homelayout,
     routes: [
       GoRoute(
         path: AppRouter.splash,
@@ -30,7 +30,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRouter.login,
-        builder: (context, state) => const HomeLayoutScreen(),
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
         path: AppRouter.signup,

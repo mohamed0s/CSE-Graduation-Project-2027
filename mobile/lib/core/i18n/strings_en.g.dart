@@ -307,13 +307,22 @@ class Translations$home$en {
 	String get craftsmen => 'services';
 
 	/// en: 'All $city services in one place'
-	String banner_badge({required Object city}) => 'All ${city} services in one place';
+	String banner_badge1({required Object city}) => 'All ${city} services in one place';
 
 	/// en: 'All the services and places you're looking for in one place'
-	String get banner_title => 'All the services and places you\'re looking for in one place';
+	String get banner_title1 => 'All the services and places you\'re looking for in one place';
 
 	/// en: 'From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.'
-	String get banner_subtitle => 'From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.';
+	String get banner_subtitle1 => 'From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.';
+
+	/// en: 'Discover what’s nearby'
+	String get banner_badge2 => 'Discover what’s nearby';
+
+	/// en: 'What do you need in $city?'
+	String banner_title2({required Object city}) => 'What do you need in ${city}?';
+
+	/// en: 'Finda understands what you need, finds the best nearby options, and helps you book and track your request.'
+	String get banner_subtitle2 => 'Finda understands what you need, finds the best nearby options, and helps you book and track your request.';
 
 	/// en: 'Quick Services & Categories'
 	String get quick_categories => 'Quick Services & Categories';
@@ -354,11 +363,29 @@ class Translations$home$en {
 	/// en: '$price EGP / month'
 	String price_per_month({required Object price}) => '${price} EGP / month';
 
-	/// en: 'clinics & Health'
-	String get health => 'clinics & Health';
+	/// en: 'Health & clinics'
+	String get Health_clinics => 'Health & clinics';
 
-	/// en: 'Real estate & Rentals'
-	String get real_estate => 'Real estate & Rentals';
+	/// en: 'Property & rentals'
+	String get Property_rentals => 'Property & rentals';
+
+	/// en: 'Banks & ATMs'
+	String get Banks_ATMs => 'Banks & ATMs';
+
+	/// en: 'Supermarkets'
+	String get Supermarkets => 'Supermarkets';
+
+	/// en: 'Public services'
+	String get Public_services => 'Public services';
+
+	/// en: 'Shops'
+	String get Shops => 'Shops';
+
+	/// en: 'Education'
+	String get Education => 'Education';
+
+	/// en: 'Places of worship'
+	String get Places_of_worship => 'Places of worship';
 }
 
 // Path: location
@@ -466,9 +493,12 @@ extension on Translations {
 			'home.finda_ai' => 'Finda AI',
 			'home.my_orders' => 'My Orders',
 			'home.craftsmen' => 'services',
-			'home.banner_badge' => ({required Object city}) => 'All ${city} services in one place',
-			'home.banner_title' => 'All the services and places you\'re looking for in one place',
-			'home.banner_subtitle' => 'From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.',
+			'home.banner_badge1' => ({required Object city}) => 'All ${city} services in one place',
+			'home.banner_title1' => 'All the services and places you\'re looking for in one place',
+			'home.banner_subtitle1' => 'From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.',
+			'home.banner_badge2' => 'Discover what’s nearby',
+			'home.banner_title2' => ({required Object city}) => 'What do you need in ${city}?',
+			'home.banner_subtitle2' => 'Finda understands what you need, finds the best nearby options, and helps you book and track your request.',
 			'home.quick_categories' => 'Quick Services & Categories',
 			'home.view_all' => 'View All',
 			'home.all' => 'All',
@@ -482,8 +512,14 @@ extension on Translations {
 			'home.nearby_suggestions' => 'Suggestions near you',
 			'home.distance_km' => ({required Object distance}) => '${distance} km',
 			'home.price_per_month' => ({required Object price}) => '${price} EGP / month',
-			'home.health' => 'clinics & Health',
-			'home.real_estate' => 'Real estate & Rentals',
+			'home.Health_clinics' => 'Health & clinics',
+			'home.Property_rentals' => 'Property & rentals',
+			'home.Banks_ATMs' => 'Banks & ATMs',
+			'home.Supermarkets' => 'Supermarkets',
+			'home.Public_services' => 'Public services',
+			'home.Shops' => 'Shops',
+			'home.Education' => 'Education',
+			'home.Places_of_worship' => 'Places of worship',
 			'location.select_location_hint' => 'Select your location',
 			'location.choose_country_city' => 'Choose country and city',
 			'location.confirm_location' => 'Confirm Location',

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/core/location/cubit/location_cubit.dart';
 import 'package:mobile/core/location/cubit/location_state.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/theme/cubit/theme_cubit.dart';
 import 'package:mobile/core/widgets/dialogs/permission_dialog.dart';
 import 'package:mobile/core/widgets/loaders/three_dots_loading_overlay.dart';
 import 'package:mobile/features/home/cubit/home_cubit.dart';
@@ -14,7 +15,6 @@ import 'package:mobile/features/home/widgets/location/nearby_map_view.dart';
 import 'package:mobile/features/home/widgets/nearby_search_card.dart';
 import 'package:mobile/features/home/widgets/promo_banner_slider.dart';
 import 'package:mobile/features/home/widgets/quick_categories_section.dart';
-import 'package:mobile/features/home/widgets/quick_filter_chips.dart';
 import 'package:mobile/features/home/widgets/suggestion_list_section.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -34,40 +34,6 @@ class _HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<_HomeView> {
-  final ScrollController _scrollController = ScrollController();
-  final GlobalKey _nearbySectionKey = GlobalKey();
-  final GlobalKey _suggestionsSectionKey = GlobalKey();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  void _scrollToSection(int index) {
-    context.read<HomeCubit>().selectFilterChip(index);
-
-    if (index == 0) {
-      _scrollController.animateTo(
-        0,
-        duration: const Duration(milliseconds: 450),
-        curve: Curves.easeInOut,
-      );
-      return;
-    }
-
-    final targetKey = index == 1 ? _nearbySectionKey : _suggestionsSectionKey;
-    final targetContext = targetKey.currentContext;
-    if (targetContext != null) {
-      Scrollable.ensureVisible(
-        targetContext,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-        alignment: 0.05,
-      );
-    }
-  }
-
   void _handleLocationListener(BuildContext context, LocationState state) {
     final homeCubit = context.read<HomeCubit>();
 
@@ -139,16 +105,13 @@ class _HomeViewState extends State<_HomeView> {
                               showDialogOnDenied: false,
                             );
                           },
-                          onNotificationTap: () {},
+                          onNotificationTap: () { context.read<ThemeCubit>().toggleTheme();},
                           onMessagesTap: () {},
                         ),
-                        QuickFilterChips(
-                          selectedIndex: homeState.selectedFilterChip,
-                          onSelect: _scrollToSection,
-                        ),
+                     
+
                         Expanded(
                           child: SingleChildScrollView(
-                            controller: _scrollController,
                             padding: EdgeInsets.only(top: 12.h, bottom: 24.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,11 +122,10 @@ class _HomeViewState extends State<_HomeView> {
                                   selectedCategoryIndex:
                                       homeState.selectedCategory,
                                   onCategorySelect: homeCubit.selectCategory,
-                                  onViewAllTap: () {},
+                                  
                                 ),
                                 SizedBox(height: 18.h),
                                 KeyedSubtree(
-                                  key: _nearbySectionKey,
                                   child: NearbySearchCard(
                                     cityName: displayCity,
                                     isListView: homeState.isListView,
@@ -204,7 +166,6 @@ class _HomeViewState extends State<_HomeView> {
                                   )
                                 else
                                   SuggestionsListSection(
-                                    sectionKey: _suggestionsSectionKey,
                                     title: t.nearby_suggestions,
                                     suggestions: filteredSuggestions,
                                   ),

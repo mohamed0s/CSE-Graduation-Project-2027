@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/core/widgets/buttons/custom_button.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
@@ -35,6 +35,7 @@ class PermissionDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.t.location;
+    final colorScheme = context.colorScheme;
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -44,7 +45,7 @@ class PermissionDialog extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 32.h),
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(32.r),
           boxShadow: [
             BoxShadow(
@@ -60,26 +61,28 @@ class PermissionDialog extends StatelessWidget {
             Container(
               width: 60.w,
               height: 60.w,
-              decoration: const BoxDecoration(
-                color: AppColors.primaryLight,
+              decoration: BoxDecoration(
+                color: colorScheme.surfaceContainerLow,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.location_on,
-                color: AppColors.primary,
+                color: colorScheme.primary,
                 size: 30.sp,
               ),
             ),
             SizedBox(height: 18.h),
             Text(
               t.location_permission_title,
-              style: context.bold18TextMain,
+              style: context.bold18.copyWith(color: colorScheme.onSurface),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 12.h),
             Text(
               t.location_permission_desc,
-              style: context.regular14TextSub,
+              style: context.regular14.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 28.h),
@@ -97,7 +100,9 @@ class PermissionDialog extends StatelessWidget {
               onPressed: () => Navigator.pop(context),
               child: Text(
                 t.cancel_btn,
-                style: context.medium14TextSub,
+                style: context.medium14.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                ),
               ),
             ),
           ],

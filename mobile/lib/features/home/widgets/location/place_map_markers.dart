@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 
 class PlaceMapMarker extends StatelessWidget {
   final String emoji;
@@ -18,13 +18,15 @@ class PlaceMapMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
+
     final borderColor = isSelected
-        ? AppColors.white
-        : (isNearby ? AppColors.primary : AppColors.textSub);
+        ? colorScheme.onPrimary
+        : (isNearby ? colorScheme.primary : colorScheme.onSurfaceVariant);
 
     final pinColor = isSelected
-        ? AppColors.primary
-        : (isNearby ? AppColors.primary : AppColors.textSub);
+        ? colorScheme.primary
+        : (isNearby ? colorScheme.primary : colorScheme.onSurfaceVariant);
 
     return GestureDetector(
       onTap: onTap,
@@ -36,7 +38,7 @@ class PlaceMapMarker extends StatelessWidget {
             width: isSelected ? 38.w : 32.w,
             height: isSelected ? 38.w : 32.w,
             decoration: BoxDecoration(
-              color: isSelected ? AppColors.primary : AppColors.white,
+              color: isSelected ? colorScheme.primary : colorScheme.surface,
               shape: BoxShape.circle,
               border: Border.all(
                 color: borderColor,

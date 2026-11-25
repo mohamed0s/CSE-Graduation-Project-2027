@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/features/home/models/suggestion_item_model.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
@@ -18,6 +18,8 @@ class SelectedPlaceMapCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
+
     return Positioned(
       left: 12.w,
       right: 12.w,
@@ -25,7 +27,7 @@ class SelectedPlaceMapCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(12.w),
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(14.r),
           boxShadow: [
             BoxShadow(
@@ -60,12 +62,16 @@ class SelectedPlaceMapCard extends StatelessWidget {
                     place.title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: context.bold12TextMain,
+                    style: context.bold12.copyWith(
+                      color: colorScheme.onSurface,
+                    ),
                   ),
                   SizedBox(height: 2.h),
                   Text(
                     '${place.location} • $distanceKm كم',
-                    style: context.regular12TextSub,
+                    style: context.regular12.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
                   ),
                 ],
               ),
@@ -74,7 +80,7 @@ class SelectedPlaceMapCard extends StatelessWidget {
               icon: Icon(
                 Icons.close,
                 size: 18.sp,
-                color: AppColors.textSub,
+                color: colorScheme.onSurfaceVariant,
               ),
               onPressed: onClose,
             ),

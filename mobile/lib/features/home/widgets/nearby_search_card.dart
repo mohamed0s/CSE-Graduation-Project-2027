@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/features/home/widgets/nearby_toggle_button.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
@@ -26,14 +26,16 @@ class NearbySearchCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.t.home;
+    final colorScheme = context.colorScheme;
+    final bgColor = Theme.of(context).scaffoldBackgroundColor;
 
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w),
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(18.r),
-        border: Border.all(color: AppColors.borderLight),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +46,7 @@ class NearbySearchCard extends StatelessWidget {
               SizedBox(width: 6.w),
               Text(
                 t.search_in_city(city: cityName),
-                style: context.bold14TextMain,
+                style: context.bold14.copyWith(color: colorScheme.onSurface),
               ),
             ],
           ),
@@ -53,7 +55,7 @@ class NearbySearchCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(4.w),
             decoration: BoxDecoration(
-              color: AppColors.backgroundLight,
+              color: bgColor,
               borderRadius: BorderRadius.circular(12.r),
             ),
             child: Row(
@@ -81,27 +83,29 @@ class NearbySearchCard extends StatelessWidget {
 
           TextField(
             onChanged: onSearchChanged,
-            style: context.regular12TextMain,
+            style: context.regular12.copyWith(color: colorScheme.onSurface),
             decoration: InputDecoration(
               hintText: t.search_hint,
-              hintStyle: context.regular11TextPlaceholder,
+              hintStyle: context.regular11.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
               filled: true,
-              fillColor: AppColors.backgroundLight,
+              fillColor: bgColor,
               contentPadding: EdgeInsets.symmetric(
                 horizontal: 14.w,
                 vertical: 12.h,
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
-                borderSide: const BorderSide(color: AppColors.borderLight),
+                borderSide: BorderSide(color: colorScheme.outlineVariant),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
-                borderSide: const BorderSide(color: AppColors.borderLight),
+                borderSide: BorderSide(color: colorScheme.outlineVariant),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
-                borderSide: const BorderSide(color: AppColors.primary),
+                borderSide: BorderSide(color: colorScheme.primary),
               ),
             ),
           ),

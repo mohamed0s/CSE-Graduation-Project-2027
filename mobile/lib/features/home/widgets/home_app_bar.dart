@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/features/home/widgets/custom_circle_button.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
@@ -53,6 +53,7 @@ class _HomeAppBarState extends State<HomeAppBar>
   Widget build(BuildContext context) {
     final t = context.t.home;
     final l = context.t.location;
+    final colorScheme = context.colorScheme;
 
     final bool hasLocation =
         widget.selectedCity != null && widget.selectedCity!.isNotEmpty;
@@ -65,19 +66,25 @@ class _HomeAppBarState extends State<HomeAppBar>
       height: 75.h,
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-      color: AppColors.white,
+      color: colorScheme.surface,
       child: Row(
         children: [
-          Text(t.app_name_ar, style: context.bold16Primary),
+          Text(
+            t.app_name_ar,
+            style: context.bold16.copyWith(color: colorScheme.primary),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 6.w),
             child: Container(
               width: 1.w,
               height: 16.h,
-              color: AppColors.borderLight,
+              color: colorScheme.outlineVariant,
             ),
           ),
-          Text(t.app_name_en, style: context.bold14TextMain),
+          Text(
+            t.app_name_en,
+            style: context.bold14.copyWith(color: colorScheme.onSurface),
+          ),
 
           SizedBox(width: 8.w),
 
@@ -96,15 +103,15 @@ class _HomeAppBarState extends State<HomeAppBar>
                       ),
                       decoration: BoxDecoration(
                         color: Color.lerp(
-                          AppColors.white,
-                          AppColors.primaryLight,
+                          colorScheme.surface,
+                          colorScheme.surfaceContainerLow,
                           hasLocation ? 0.2 : _pulseAnimation.value * 0.85,
                         ),
                         borderRadius: BorderRadius.circular(24.r),
                         border: Border.all(
                           color: Color.lerp(
-                            AppColors.borderLight,
-                            AppColors.primary,
+                            colorScheme.outlineVariant,
+                            colorScheme.primary,
                             hasLocation ? 0.35 : _pulseAnimation.value,
                           )!,
                           width: hasLocation
@@ -115,7 +122,7 @@ class _HomeAppBarState extends State<HomeAppBar>
                             ? []
                             : [
                                 BoxShadow(
-                                  color: AppColors.primary.withValues(
+                                  color: colorScheme.primary.withValues(
                                     alpha: .28 * _pulseAnimation.value,
                                   ),
                                   blurRadius: 10 * _pulseAnimation.value,
@@ -130,8 +137,8 @@ class _HomeAppBarState extends State<HomeAppBar>
                             Icons.location_on_outlined,
                             size: 16.sp,
                             color: hasLocation
-                                ? AppColors.textSub
-                                : AppColors.primary,
+                                ? colorScheme.onSurfaceVariant
+                                : colorScheme.primary,
                           ),
                           SizedBox(width: 4.w),
                           Flexible(
@@ -141,8 +148,12 @@ class _HomeAppBarState extends State<HomeAppBar>
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: hasLocation
-                                  ? context.semiBold12TextMain
-                                  : context.semiBold12Primary,
+                                  ? context.semiBold12.copyWith(
+                                      color: colorScheme.onSurface,
+                                    )
+                                  : context.semiBold12.copyWith(
+                                      color: colorScheme.primary,
+                                    ),
                             ),
                           ),
                           SizedBox(width: 4.w),
@@ -150,8 +161,8 @@ class _HomeAppBarState extends State<HomeAppBar>
                             Icons.keyboard_arrow_down,
                             size: 16.sp,
                             color: hasLocation
-                                ? AppColors.textSub
-                                : AppColors.primary,
+                                ? colorScheme.onSurfaceVariant
+                                : colorScheme.primary,
                           ),
                         ],
                       ),

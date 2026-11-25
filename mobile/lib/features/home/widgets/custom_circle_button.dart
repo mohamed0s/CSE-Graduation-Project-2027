@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 
 class CircleIconButton extends StatelessWidget {
   final IconData icon;
@@ -10,6 +10,8 @@ class CircleIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(20.r),
@@ -18,10 +20,10 @@ class CircleIconButton extends StatelessWidget {
         height: 36.w,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: AppColors.white,
-          border: Border.all(color: AppColors.borderLight),
+          color: colorScheme.surface,
+          border: Border.all(color: colorScheme.outlineVariant),
         ),
-        child: Icon(icon, size: 18.sp, color: AppColors.textSub),
+        child: Icon(icon, size: 18.sp, color: colorScheme.onSurfaceVariant),
       ),
     );
   }

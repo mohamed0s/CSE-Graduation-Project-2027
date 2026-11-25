@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
 import 'package:mobile/core/i18n/strings.g.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/features/home/models/suggestion_item_model.dart';
 import 'package:mobile/generated/style_atoms.dart';
 
@@ -14,6 +14,7 @@ class SuggestionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.t.home;
+    final colorScheme = context.colorScheme;
 
     return GestureDetector(
       onTap: onTap,
@@ -21,9 +22,9 @@ class SuggestionCard extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
         padding: EdgeInsets.all(14.w),
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(16.r),
-          border: Border.all(color: AppColors.borderLight),
+          border: Border.all(color: colorScheme.outlineVariant),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,8 +35,13 @@ class SuggestionCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Flexible(
-                        child: Text(item.title, style: context.bold14TextMain),
+                      Expanded(
+                        child: Text(
+                          item.title,
+                          style: context.bold14.copyWith(
+                            color: colorScheme.onSurface,
+                          ),
+                        ),
                       ),
                       SizedBox(width: 8.w),
                       Container(
@@ -74,12 +80,19 @@ class SuggestionCard extends StatelessWidget {
                   ),
                   SizedBox(height: 6.h),
                   if (item.subtitle.isNotEmpty)
-                    Text(item.subtitle, style: context.regular12TextSub),
+                    Text(
+                      item.subtitle,
+                      style: context.regular12.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                    ),
                   if (item.price != null) ...[
                     SizedBox(height: 4.h),
                     Text(
                       t.price_per_month(price: item.price!),
-                      style: context.bold12TextLink,
+                      style: context.bold12.copyWith(
+                        color: colorScheme.primary,
+                      ),
                     ),
                   ],
                 ],
@@ -97,19 +110,26 @@ class SuggestionCard extends StatelessWidget {
                     vertical: 4.h,
                   ),
                   decoration: BoxDecoration(
-                    color: AppColors.danger.withValues(alpha: .1),
+                    color: colorScheme.error.withValues(alpha: .1),
                     borderRadius: BorderRadius.circular(20.r),
                     border: Border.all(
-                      color: AppColors.danger.withValues(alpha: .5),
+                      color: colorScheme.error.withValues(alpha: .5),
                     ),
                   ),
                   child: Text(
                     t.distance_km(distance: item.distance),
-                    style: context.semiBold11Danger,
+                    style: context.semiBold11.copyWith(
+                      color: colorScheme.error,
+                    ),
                   ),
                 ),
                 SizedBox(height: 8.h),
-                Text(item.location, style: context.regular12TextSub),
+                Text(
+                  item.location,
+                  style: context.regular12.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                ),
               ],
             ),
           ],

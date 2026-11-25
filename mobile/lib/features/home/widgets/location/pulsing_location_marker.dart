@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 
 class PulsingLocationMarker extends StatelessWidget {
   final AnimationController controller;
@@ -12,6 +12,8 @@ class PulsingLocationMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
+
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
@@ -28,7 +30,7 @@ class PulsingLocationMarker extends StatelessWidget {
                   width: 44.w,
                   height: 44.w,
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withValues(alpha: 0.35),
+                    color: colorScheme.primary.withValues(alpha: 0.35),
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -38,10 +40,10 @@ class PulsingLocationMarker extends StatelessWidget {
               width: 18.w,
               height: 18.w,
               decoration: BoxDecoration(
-                color: AppColors.primary,
+                color: colorScheme.primary,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: AppColors.white,
+                  color: colorScheme.onPrimary,
                   width: 3.w,
                 ),
                 boxShadow: [

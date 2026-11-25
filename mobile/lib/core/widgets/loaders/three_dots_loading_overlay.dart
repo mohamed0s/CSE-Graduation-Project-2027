@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 
 class ThreeDotsLoadingOverlay extends StatefulWidget {
   const ThreeDotsLoadingOverlay({super.key});
@@ -31,10 +31,12 @@ class _ThreeDotsLoadingOverlayState extends State<ThreeDotsLoadingOverlay>
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor = context.colorScheme.primary;
+
     return Positioned.fill(
       child: AbsorbPointer(
         child: Container(
-          color: Colors.black.withValues(alpha: .8), 
+          color: Colors.black.withValues(alpha: .8),
           child: Center(
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -42,14 +44,13 @@ class _ThreeDotsLoadingOverlayState extends State<ThreeDotsLoadingOverlay>
                 return AnimatedBuilder(
                   animation: _controller,
                   builder: (context, child) {
-                    
                     final double delay = index * 0.2;
                     final double value =
                         ((_controller.value - delay) % 1.0 + 1.0) % 1.0;
                     final double scale = value < 0.5
                         ? 0.6 + (value * 1.2)
                         : 1.2 - ((value - 0.5) * 1.2);
-            
+
                     return Transform.scale(
                       scale: scale.clamp(0.6, 1.2),
                       child: Container(
@@ -58,8 +59,8 @@ class _ThreeDotsLoadingOverlayState extends State<ThreeDotsLoadingOverlay>
                         height: 9.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColors.primary.withValues(alpha: 
-                            (scale / 1.2).clamp(0.4, 1.0),
+                          color: primaryColor.withValues(
+                            alpha: (scale / 1.2).clamp(0.4, 1.0),
                           ),
                         ),
                       ),

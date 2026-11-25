@@ -174,15 +174,18 @@ class _Translations$home$ar implements Translations$home$en {
 	final TranslationsAr _root; // ignore: unused_field
 
 	// Translations
-	@override String get app_name_ar => 'فين ده';
+	@override String get app_name_ar => 'فيندا';
 	@override String get app_name_en => 'Finda';
 	@override String get discover => 'اكتشف';
 	@override String get finda_ai => 'Finda Ai';
 	@override String get my_orders => 'طلباتي';
 	@override String get craftsmen => 'خدمات';
-	@override String banner_badge({required Object city}) => 'كل خدمات ${city} في مكان واحد';
-	@override String get banner_title => 'كل الخدمات والأماكن اللي بتدور عليها في مكان واحد';
-	@override String get banner_subtitle => 'من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فين ده! هيسهّل عليك تلاقي اللي بتدور عليه.';
+	@override String banner_badge1({required Object city}) => 'كل خدمات ${city} في مكان واحد';
+	@override String get banner_title1 => 'كل الخدمات والأماكن اللي بتدور عليها في مكان واحد';
+	@override String get banner_subtitle1 => 'من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فيندا! هيسهّل عليك تلاقي اللي بتدور عليه.';
+	@override String get banner_badge2 => 'اكتشف كل اللى حواليك';
+	@override String banner_title2({required Object city}) => 'محتاج ايه في ${city}';
+	@override String get banner_subtitle2 => 'فيندا! بيفهم إنت محتاج إيه، بيدورلك على الأنسب حواليك، وبيساعدك تنفذ الطلب وتتابعه لغاية ما يخلص.';
 	@override String get quick_categories => 'الخدمات والتصنيفات السريعة';
 	@override String get view_all => 'عرض الكل';
 	@override String get all => 'الكل';
@@ -196,8 +199,14 @@ class _Translations$home$ar implements Translations$home$en {
 	@override String get nearby_suggestions => 'مقترحات قريبة منك';
 	@override String distance_km({required Object distance}) => '${distance} كم';
 	@override String price_per_month({required Object price}) => '${price} ج / شهر';
-	@override String get health => 'عيادات وصحه';
-	@override String get real_estate => 'عقارات و ايجارات';
+	@override String get Health_clinics => 'صحة وعيادات';
+	@override String get Property_rentals => 'ايجارات وعقارات';
+	@override String get Banks_ATMs => 'بنوك و ATM';
+	@override String get Supermarkets => 'سوبر ماركت';
+	@override String get Public_services => 'مصالح حكومية';
+	@override String get Shops => 'محلات';
+	@override String get Education => 'خدمات تعليمية';
+	@override String get Places_of_worship => 'اماكن دينية';
 }
 
 // Path: location
@@ -281,15 +290,18 @@ extension on TranslationsAr {
 			'nav.finda_ai' => 'Finda Ai',
 			'nav.orders' => 'طلباتي',
 			'nav.profile' => 'أحمد',
-			'home.app_name_ar' => 'فين ده',
+			'home.app_name_ar' => 'فيندا',
 			'home.app_name_en' => 'Finda',
 			'home.discover' => 'اكتشف',
 			'home.finda_ai' => 'Finda Ai',
 			'home.my_orders' => 'طلباتي',
 			'home.craftsmen' => 'خدمات',
-			'home.banner_badge' => ({required Object city}) => 'كل خدمات ${city} في مكان واحد',
-			'home.banner_title' => 'كل الخدمات والأماكن اللي بتدور عليها في مكان واحد',
-			'home.banner_subtitle' => 'من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فين ده! هيسهّل عليك تلاقي اللي بتدور عليه.',
+			'home.banner_badge1' => ({required Object city}) => 'كل خدمات ${city} في مكان واحد',
+			'home.banner_title1' => 'كل الخدمات والأماكن اللي بتدور عليها في مكان واحد',
+			'home.banner_subtitle1' => 'من المطاعم والصنايعية للعيادات والإيجارات والبنوك والمصالح الحكومية، فيندا! هيسهّل عليك تلاقي اللي بتدور عليه.',
+			'home.banner_badge2' => 'اكتشف كل اللى حواليك',
+			'home.banner_title2' => ({required Object city}) => 'محتاج ايه في ${city}',
+			'home.banner_subtitle2' => 'فيندا! بيفهم إنت محتاج إيه، بيدورلك على الأنسب حواليك، وبيساعدك تنفذ الطلب وتتابعه لغاية ما يخلص.',
 			'home.quick_categories' => 'الخدمات والتصنيفات السريعة',
 			'home.view_all' => 'عرض الكل',
 			'home.all' => 'الكل',
@@ -303,8 +315,14 @@ extension on TranslationsAr {
 			'home.nearby_suggestions' => 'مقترحات قريبة منك',
 			'home.distance_km' => ({required Object distance}) => '${distance} كم',
 			'home.price_per_month' => ({required Object price}) => '${price} ج / شهر',
-			'home.health' => 'عيادات وصحه',
-			'home.real_estate' => 'عقارات و ايجارات',
+			'home.Health_clinics' => 'صحة وعيادات',
+			'home.Property_rentals' => 'ايجارات وعقارات',
+			'home.Banks_ATMs' => 'بنوك و ATM',
+			'home.Supermarkets' => 'سوبر ماركت',
+			'home.Public_services' => 'مصالح حكومية',
+			'home.Shops' => 'محلات',
+			'home.Education' => 'خدمات تعليمية',
+			'home.Places_of_worship' => 'اماكن دينية',
 			'location.select_location_hint' => 'حدد موقعك',
 			'location.choose_country_city' => 'اختر الدولة والمدينة',
 			'location.confirm_location' => 'تأكيد الموقع',

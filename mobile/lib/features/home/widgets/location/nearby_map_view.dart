@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:mobile/core/di/injection_container.dart';
 import 'package:mobile/core/location/repository/location_repository.dart';
-import 'package:mobile/core/theme/app_colors.dart';
+import 'package:mobile/core/utils/extensions.dart';
 import 'package:mobile/features/home/models/suggestion_item_model.dart';
 import 'package:mobile/features/home/widgets/location/place_map_markers.dart';
 import 'package:mobile/features/home/widgets/location/pulsing_location_marker.dart';
@@ -101,6 +101,7 @@ class _NearbyMapViewState extends State<NearbyMapView>
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
     final userPoint = LatLng(widget.latitude, widget.longitude);
     final initialCityPoint = LatLng(
       widget.latitude + 0.035,
@@ -111,9 +112,9 @@ class _NearbyMapViewState extends State<NearbyMapView>
       height: 400.h,
       margin: EdgeInsets.symmetric(horizontal: 16.w),
       decoration: BoxDecoration(
-        color: AppColors.backgroundLight,
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(18.r),
-        border: Border.all(color: AppColors.borderLight),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18.r),

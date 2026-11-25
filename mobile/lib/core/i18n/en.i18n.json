@@ -76,9 +76,13 @@
     "finda_ai": "Finda AI",
     "my_orders": "My Orders",
     "craftsmen": "services",
-    "banner_badge": "All $city services in one place",
-    "banner_title": "All the services and places you're looking for in one place",
-    "banner_subtitle": "From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.",
+    "banner_badge1": "All $city services in one place",
+    "banner_title1": "All the services and places you're looking for in one place",
+    "banner_subtitle1": "From restaurants and craftsmen to clinics, rentals, banks, and government offices, Finda! makes it easy to find what you need.",
+    "banner_badge2":"Discover what’s nearby",
+    "banner_title2":  "What do you need in $city?",
+    "banner_subtitle2": "Finda understands what you need, finds the best nearby options, and helps you book and track your request.",
+  
     "quick_categories": "Quick Services & Categories",
     "view_all": "View All",
     "all": "All",
@@ -92,8 +96,14 @@
     "nearby_suggestions": "Suggestions near you",
     "distance_km": "$distance km",
     "price_per_month": "$price EGP / month",
-    "health":"clinics & Health",
-    "real_estate":"Real estate & Rentals"
+    "Health_clinics":"Health & clinics",
+    "Property_rentals":"Property & rentals",
+    "Banks_ATMs":"Banks & ATMs",
+    "Supermarkets":"Supermarkets",
+    "Public_services":"Public services",
+    "Shops":"Shops",
+    "Education":"Education",
+    "Places_of_worship":"Places of worship"
   },
   
   "location":{

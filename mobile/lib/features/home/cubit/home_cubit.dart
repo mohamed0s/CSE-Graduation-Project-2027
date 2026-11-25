@@ -74,7 +74,6 @@ class HomeCubit extends Cubit<HomeState> {
     }).toList();
   }
 
-  // بدل ما الـ UI يقرر يعمل إيه، الـ Cubit هو اللي يقرر
 void toggleView({
   required bool isList,
   required bool hasLocation,
