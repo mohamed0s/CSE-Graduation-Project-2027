@@ -4,6 +4,7 @@ using Backend.Application;
 using Backend.Application.Common.Interfaces;
 using Backend.Infrastructure;
 using Microsoft.OpenApi;
+using Npgsql;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -61,6 +62,15 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
+
+var rawCs = app.Configuration.GetConnectionString("Default");
+if (!string.IsNullOrWhiteSpace(rawCs))
+{
+    var csb = new NpgsqlConnectionStringBuilder(rawCs);
+    Log.Information(
+        "Database target configured: Host={DbHost}, Port={DbPort}, Database={DbName}, Username={DbUser}",
+        csb.Host, csb.Port, csb.Database, csb.Username);
+}
 
 app.UseMiddleware<CorrelationIdMiddleware>();
 app.UseExceptionHandler();

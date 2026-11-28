@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Backend.Domain.Exceptions;
 using FluentValidation;
 using Microsoft.AspNetCore.Diagnostics;
@@ -35,16 +36,11 @@ public sealed class GlobalExceptionHandler : IExceptionHandler
                 exception.GetType().Name, statusCode, httpContext.Request.Method, httpContext.Request.Path, exception.Message);
         }
 
-        ProblemDetails problem = errors is not null
-            ? new HttpValidationProblemDetails(errors)
-            {
-                Status = statusCode,
-                Title = title,
-                Detail = detail,
-                Instance = httpContext.Request.Path,
-                Type = $"https://finda.app/errors/{statusCode}"
-            }
-            : new ProblemDetails
+        httpContext.Response.StatusCode = statusCode;
+
+        if (errors is not null)
+        {
+            var validationProblem = new HttpValidationProblemDetails(errors)
             {
                 Status = statusCode,
                 Title = title,
@@ -52,11 +48,31 @@ public sealed class GlobalExceptionHandler : IExceptionHandler
                 Instance = httpContext.Request.Path,
                 Type = $"https://finda.app/errors/{statusCode}"
             };
+            validationProblem.Extensions["traceId"] = httpContext.TraceIdentifier;
 
+            await httpContext.Response.WriteAsJsonAsync(
+                validationProblem,
+                options: null,
+                contentType: "application/problem+json",
+                cancellationToken);
+            return true;
+        }
+
+        var problem = new ProblemDetails
+        {
+            Status = statusCode,
+            Title = title,
+            Detail = detail,
+            Instance = httpContext.Request.Path,
+            Type = $"https://finda.app/errors/{statusCode}"
+        };
         problem.Extensions["traceId"] = httpContext.TraceIdentifier;
 
-        httpContext.Response.StatusCode = statusCode;
-        await httpContext.Response.WriteAsJsonAsync(problem, cancellationToken);
+        await httpContext.Response.WriteAsJsonAsync(
+            problem,
+            options: null,
+            contentType: "application/problem+json",
+            cancellationToken);
         return true;
     }
 
@@ -69,7 +85,7 @@ public sealed class GlobalExceptionHandler : IExceptionHandler
                 "Validation Failed",
                 "One or more validation errors occurred.",
                 validationEx.Errors
-                    .GroupBy(e => e.PropertyName)
+                    .GroupBy(e => JsonNamingPolicy.CamelCase.ConvertName(e.PropertyName))
                     .ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToArray())),
 
             DomainValidationException => (

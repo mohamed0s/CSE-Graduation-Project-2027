@@ -132,16 +132,25 @@ public class JwtAndSecurityTests
 
         Assert.True(handled);
         Assert.Equal(400, context.Response.StatusCode);
+
+        context.Response.Body.Position = 0;
+        using var reader = new StreamReader(context.Response.Body);
+        var json = await reader.ReadToEndAsync();
+        Assert.Contains("\"errors\"", json);
+        Assert.Contains("\"email\"", json);
+        Assert.Contains("Invalid email", json);
     }
 
-    [Fact]
-    public void AddInfrastructure_InProduction_ShouldFailFastWhenRequiredConfigMissing()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void AddInfrastructure_ShouldFailFastWhenConnectionStringMissing(bool isDevelopment)
     {
         var services = new ServiceCollection();
         var emptyConfig = new ConfigurationBuilder().Build();
 
         Assert.Throws<InvalidOperationException>(() =>
-            services.AddInfrastructure(emptyConfig, isDevelopment: false));
+            services.AddInfrastructure(emptyConfig, isDevelopment: isDevelopment));
     }
 
     private sealed class StubHostEnvironment : IHostEnvironment

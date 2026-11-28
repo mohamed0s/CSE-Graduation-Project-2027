@@ -27,13 +27,10 @@ public static class DependencyInjection
         var connectionString = configuration.GetConnectionString("Default");
         if (string.IsNullOrWhiteSpace(connectionString))
         {
-            if (!isDevelopment)
-            {
-                throw new InvalidOperationException("Required configuration 'ConnectionStrings:Default' is missing.");
-            }
-
-            // Placeholder for Development startup when DB is not yet configured; /health will report degraded/unhealthy if DB is probed.
-            connectionString = "Host=localhost;Port=5432;Database=finda;Username=postgres;Password=postgres";
+            var hint = isDevelopment
+                ? " Configure it via User Secrets: dotnet user-secrets set \"ConnectionStrings:Default\" \"Host=localhost;Port=5432;Database=finda_dev;Username=finda;Password=<password>\" --project src/Backend.Api"
+                : string.Empty;
+            throw new InvalidOperationException($"Required configuration 'ConnectionStrings:Default' is missing.{hint}");
         }
 
         services.AddDbContext<AppDbContext>(options =>
@@ -52,21 +49,20 @@ public static class DependencyInjection
         }
 
         var jwtOptions = configuration.GetSection(JwtOptions.SectionName).Get<JwtOptions>() ?? new JwtOptions();
-        if (string.IsNullOrWhiteSpace(jwtOptions.Secret) || jwtOptions.Secret.Length < 32)
+        var hasValidSecret = !string.IsNullOrWhiteSpace(jwtOptions.Secret) && jwtOptions.Secret.Length >= 32;
+        if (!hasValidSecret && !isDevelopment)
         {
-            if (!isDevelopment)
-            {
-                throw new InvalidOperationException("Required configuration 'Jwt:Secret' must be at least 32 characters in non-Development environments.");
-            }
+            throw new InvalidOperationException("Required configuration 'Jwt:Secret' must be at least 32 characters in non-Development environments.");
         }
-        else
-        {
-            services.AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(options =>
+
+        services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                if (hasValidSecret)
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -79,8 +75,8 @@ public static class DependencyInjection
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.Secret))
                     };
-                });
-        }
+                }
+            });
 
         services.AddAuthorization();
 

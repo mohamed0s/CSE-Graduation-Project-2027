@@ -7,7 +7,6 @@ namespace Backend.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/auth")]
-[Route("api/auth")]
 public sealed class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;

@@ -14,7 +14,11 @@ namespace Backend.IntegrationTests.Auth;
 
 public class AuthPostgreSqlIntegrationTests : IAsyncLifetime
 {
-    private readonly PostgreSqlContainer _postgres = new PostgreSqlBuilder("postgis/postgis:16-3.4").Build();
+    private readonly PostgreSqlContainer _postgres = new PostgreSqlBuilder("postgis/postgis:16-3.4")
+        .WithDatabase("finda_test")
+        .WithUsername("finda_test")
+        .WithPassword("finda_test_pw")
+        .Build();
     private WebApplicationFactory<Program> _factory = null!;
     private HttpClient _client = null!;
 
@@ -25,19 +29,13 @@ public class AuthPostgreSqlIntegrationTests : IAsyncLifetime
         _factory = new WebApplicationFactory<Program>()
             .WithWebHostBuilder(builder =>
             {
-                builder.UseEnvironment("Development");
-                builder.ConfigureAppConfiguration((_, config) =>
-                {
-                    config.AddInMemoryCollection(new Dictionary<string, string?>
-                    {
-                        ["ConnectionStrings:Default"] = _postgres.GetConnectionString(),
-                        ["Jwt:Secret"] = "integration_test_jwt_secret_at_least_32_chars",
-                        ["Jwt:Issuer"] = "finda-api",
-                        ["Jwt:Audience"] = "finda-clients",
-                        ["Jwt:AccessTokenMinutes"] = "15",
-                        ["Jwt:RefreshTokenDays"] = "14"
-                    });
-                });
+                builder.UseEnvironment("Testing");
+                builder.UseSetting("ConnectionStrings:Default", _postgres.GetConnectionString());
+                builder.UseSetting("Jwt:Secret", "integration_test_jwt_secret_at_least_32_chars");
+                builder.UseSetting("Jwt:Issuer", "finda-api");
+                builder.UseSetting("Jwt:Audience", "finda-clients");
+                builder.UseSetting("Jwt:AccessTokenMinutes", "15");
+                builder.UseSetting("Jwt:RefreshTokenDays", "14");
             });
 
         using var scope = _factory.Services.CreateScope();
@@ -105,5 +103,74 @@ public class AuthPostgreSqlIntegrationTests : IAsyncLifetime
 
         var revokedNewRes = await _client.PostAsJsonAsync("/api/v1/auth/refresh", new RefreshTokenRequest(rotated.RefreshToken));
         Assert.Equal(HttpStatusCode.Unauthorized, revokedNewRes.StatusCode);
+
+        // 9. Fresh login -> Logout -> Refresh fails
+        var login2Res = await _client.PostAsJsonAsync("/api/v1/auth/login", new LoginRequest("customer@finda.test", "StrongPass123"));
+        Assert.Equal(HttpStatusCode.OK, login2Res.StatusCode);
+        var login2Body = await login2Res.Content.ReadFromJsonAsync<AuthResponse>();
+        Assert.NotNull(login2Body);
+
+        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", login2Body!.AccessToken);
+        var logoutRes = await _client.PostAsJsonAsync("/api/v1/auth/logout", new LogoutRequest(login2Body.RefreshToken));
+        Assert.Equal(HttpStatusCode.NoContent, logoutRes.StatusCode);
+
+        var afterLogoutRefresh = await _client.PostAsJsonAsync("/api/v1/auth/refresh", new RefreshTokenRequest(login2Body.RefreshToken));
+        Assert.Equal(HttpStatusCode.Unauthorized, afterLogoutRefresh.StatusCode);
+    }
+
+    [Fact]
+    public async Task Register_WithPlainEmailAndValidPayload_ShouldReturn201Created()
+    {
+        var request = new RegisterRequest("ah@gmail.com", "123d@G4x", "Ahmed hAA", "01010122847");
+
+        var response = await _client.PostAsJsonAsync("/api/v1/auth/register", request);
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+        var body = await response.Content.ReadFromJsonAsync<AuthResponse>();
+        Assert.NotNull(body);
+        Assert.Equal("ah@gmail.com", body!.User.Email);
+        Assert.Contains("CUSTOMER", body.User.Roles);
+    }
+
+    [Theory]
+    [InlineData("[ah@gmail.com](mailto:ah@gmail.com)", "123d@G4x", "Ahmed hAA", "01010122847", "email")]
+    [InlineData("valid@gmail.com", "123d@g4x", "Ahmed hAA", "01010122847", "password")]
+    [InlineData("valid@gmail.com", "123D@G4X", "Ahmed hAA", "01010122847", "password")]
+    [InlineData("valid@gmail.com", "abcD@efg", "Ahmed hAA", "01010122847", "password")]
+    [InlineData("valid@gmail.com", "123d@Gx", "Ahmed hAA", "01010122847", "password")]
+    [InlineData("valid@gmail.com", "123d@G4x", "A", "01010122847", "fullName")]
+    [InlineData("valid@gmail.com", "123d@G4x", "Ahmed hAA", "01234567890123456789012345678901", "phoneNumber")]
+    public async Task Register_WithInvalidField_ShouldReturn400WithFieldLevelErrors(
+        string email,
+        string password,
+        string fullName,
+        string phoneNumber,
+        string expectedErrorField)
+    {
+        var request = new RegisterRequest(email, password, fullName, phoneNumber);
+
+        var response = await _client.PostAsJsonAsync("/api/v1/auth/register", request);
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+
+        var rawBody = await response.Content.ReadAsStringAsync();
+        Assert.Contains("\"errors\"", rawBody);
+        Assert.Contains($"\"{expectedErrorField}\"", rawBody);
+        Assert.DoesNotContain(password, rawBody);
+    }
+
+    [Fact]
+    public async Task UnversionedAuthRoutes_ShouldReturn404()
+    {
+        var unversionedRegister = await _client.PostAsJsonAsync("/api/auth/register", new RegisterRequest("a@b.com", "Test1234@", "Test User"));
+        var unversionedLogin = await _client.PostAsJsonAsync("/api/auth/login", new LoginRequest("a@b.com", "Test1234@"));
+        var unversionedRefresh = await _client.PostAsJsonAsync("/api/auth/refresh", new RefreshTokenRequest("tok"));
+        var unversionedLogout = await _client.PostAsJsonAsync("/api/auth/logout", new LogoutRequest("tok"));
+        var unversionedMe = await _client.GetAsync("/api/auth/me");
+
+        Assert.Equal(HttpStatusCode.NotFound, unversionedRegister.StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, unversionedLogin.StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, unversionedRefresh.StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, unversionedLogout.StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, unversionedMe.StatusCode);
     }
 }
