@@ -28,9 +28,9 @@ public class RestaurantLocationSettingsConfiguration : IEntityTypeConfiguration<
         builder.HasIndex(x => x.ProviderLocationId).IsUnique().HasDatabaseName("uq_restaurant_location_settings_provider_location_id");
 
         builder.HasOne(x => x.ProviderLocation)
-            .WithOne()
-            .HasForeignKey<RestaurantLocationSettings>(x => new { x.ProviderLocationId, x.ProviderType })
-            .HasPrincipalKey<ProviderLocation>(pl => new { pl.Id, pl.ProviderType })
+            .WithMany()
+            .HasForeignKey(x => new { x.ProviderLocationId, x.ProviderType })
+            .HasPrincipalKey(pl => new { pl.Id, pl.ProviderType })
             .HasConstraintName("fk_restaurant_location_settings_provider_location_type")
             .OnDelete(DeleteBehavior.Cascade);
     }

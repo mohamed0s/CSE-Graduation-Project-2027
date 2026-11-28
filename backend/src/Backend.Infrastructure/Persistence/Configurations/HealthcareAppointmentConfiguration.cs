@@ -19,6 +19,9 @@ public class HealthcareAppointmentConfiguration : IEntityTypeConfiguration<Healt
 
         builder.HasKey(x => x.Id).HasName("pk_healthcare_appointments");
 
+        builder.HasAlternateKey(x => new { x.Id, x.CustomerId })
+            .HasName("uq_healthcare_appointments_id_customer");
+
         builder.Property(x => x.Id).HasColumnName("id").HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()");
         builder.Property(x => x.CustomerId).HasColumnName("customer_id").HasColumnType("uuid").IsRequired();
         builder.Property(x => x.HealthcareProviderId).HasColumnName("healthcare_provider_id").HasColumnType("uuid").IsRequired();

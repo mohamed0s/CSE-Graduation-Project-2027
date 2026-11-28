@@ -18,6 +18,9 @@ public class GeneralProviderConfiguration : IEntityTypeConfiguration<GeneralProv
 
         builder.HasKey(x => x.ProviderId).HasName("pk_general_providers");
 
+        builder.HasAlternateKey(x => new { x.ProviderId, x.ServiceId })
+            .HasName("uq_general_providers_provider_service");
+
         builder.Property(x => x.ProviderId).HasColumnName("provider_id").HasColumnType("uuid").IsRequired();
         builder.Property(x => x.ProviderType).HasColumnName("provider_type").HasColumnType("varchar(30)").HasMaxLength(30).HasConversion<string>().HasDefaultValue(ProviderType.GENERAL).IsRequired();
         builder.Property(x => x.ServiceId).HasColumnName("service_id").HasColumnType("uuid").IsRequired();

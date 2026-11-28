@@ -11,7 +11,7 @@ public sealed class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbConte
     public AppDbContext CreateDbContext(string[] args)
     {
         var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__Default")
-            ?? "Host=localhost;Port=5432;Database=finda_design;Username=postgres;Password=postgres";
+            ?? "Host=localhost;Port=5432;Database=finda_dev;Username=finda;Password=finda_dev_password";
 
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
         optionsBuilder.UseNpgsql(

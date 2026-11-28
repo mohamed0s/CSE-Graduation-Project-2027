@@ -46,20 +46,23 @@ public class ReviewConfiguration : IEntityTypeConfiguration<Review>
 
         builder.HasOne(x => x.ServiceRequest)
             .WithOne()
-            .HasForeignKey<Review>(x => x.ServiceRequestId)
-            .HasConstraintName("fk_reviews_service_requests_service_request_id")
+            .HasForeignKey<Review>(x => new { x.ServiceRequestId, x.CustomerId })
+            .HasPrincipalKey<Backend.Domain.Marketplace.ServiceRequest>(sr => new { sr.Id, sr.CustomerId })
+            .HasConstraintName("fk_reviews_service_request_customer")
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(x => x.FoodOrder)
             .WithOne()
-            .HasForeignKey<Review>(x => x.FoodOrderId)
-            .HasConstraintName("fk_reviews_food_orders_food_order_id")
+            .HasForeignKey<Review>(x => new { x.FoodOrderId, x.CustomerId })
+            .HasPrincipalKey<Backend.Domain.Food.FoodOrder>(fo => new { fo.Id, fo.CustomerId })
+            .HasConstraintName("fk_reviews_food_order_customer")
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(x => x.HealthcareAppointment)
             .WithOne()
-            .HasForeignKey<Review>(x => x.HealthcareAppointmentId)
-            .HasConstraintName("fk_reviews_healthcare_appointments_healthcare_appointment_id")
+            .HasForeignKey<Review>(x => new { x.HealthcareAppointmentId, x.CustomerId })
+            .HasPrincipalKey<Backend.Domain.Healthcare.HealthcareAppointment>(ha => new { ha.Id, ha.CustomerId })
+            .HasConstraintName("fk_reviews_healthcare_appointment_customer")
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

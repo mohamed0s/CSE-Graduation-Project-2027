@@ -19,6 +19,9 @@ public class FoodOrderConfiguration : IEntityTypeConfiguration<FoodOrder>
 
         builder.HasKey(x => x.Id).HasName("pk_food_orders");
 
+        builder.HasAlternateKey(x => new { x.Id, x.CustomerId })
+            .HasName("uq_food_orders_id_customer");
+
         builder.Property(x => x.Id).HasColumnName("id").HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()");
         builder.Property(x => x.OrderNumber).HasColumnName("order_number").HasColumnType("varchar(30)").HasMaxLength(30).IsRequired();
         builder.Property(x => x.CustomerId).HasColumnName("customer_id").HasColumnType("uuid").IsRequired();

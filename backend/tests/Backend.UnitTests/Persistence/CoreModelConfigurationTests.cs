@@ -158,4 +158,30 @@ public class CoreModelConfigurationTests
         var refreshToken = context.Model.FindEntityType(typeof(RefreshToken))!;
         Assert.True(refreshToken.GetIndexes().Single(i => i.GetDatabaseName() == "uq_refresh_tokens_token_hash").IsUnique);
     }
+
+    [Fact]
+    public void IntegrityCompositeForeignKeys_ShouldEnforceServiceCategoryAndCustomerOwnership()
+    {
+        using var context = CreateNpgsqlContext();
+        var model = GetDesignTimeModel(context);
+
+        var serviceRequest = model.FindEntityType(typeof(Backend.Domain.Marketplace.ServiceRequest))!;
+        var gpFk = serviceRequest.GetForeignKeys().Single(fk => fk.GetConstraintName() == "fk_service_requests_general_provider_service");
+        Assert.Equal(new[] { "general_provider_id", "service_id" }, gpFk.Properties.Select(p => p.GetColumnName()).ToArray());
+
+        var menuItem = model.FindEntityType(typeof(Backend.Domain.Food.MenuItem))!;
+        var catFk = menuItem.GetForeignKeys().Single(fk => fk.GetConstraintName() == "fk_menu_items_menu_category_restaurant");
+        Assert.Equal(new[] { "menu_category_id", "restaurant_id" }, catFk.Properties.Select(p => p.GetColumnName()).ToArray());
+
+        var review = model.FindEntityType(typeof(Backend.Domain.Reviews.Review))!;
+        Assert.Contains(review.GetForeignKeys(), fk => fk.GetConstraintName() == "fk_reviews_service_request_customer");
+        Assert.Contains(review.GetForeignKeys(), fk => fk.GetConstraintName() == "fk_reviews_food_order_customer");
+        Assert.Contains(review.GetForeignKeys(), fk => fk.GetConstraintName() == "fk_reviews_healthcare_appointment_customer");
+
+        var restSettings = model.FindEntityType(typeof(Backend.Domain.Food.RestaurantLocationSettings))!;
+        Assert.Single(restSettings.GetIndexes().Where(i => i.IsUnique));
+
+        var healthSettings = model.FindEntityType(typeof(Backend.Domain.Healthcare.HealthcareLocationSettings))!;
+        Assert.Single(healthSettings.GetIndexes().Where(i => i.IsUnique));
+    }
 }

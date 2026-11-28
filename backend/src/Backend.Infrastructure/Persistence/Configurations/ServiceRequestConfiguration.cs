@@ -18,6 +18,9 @@ public class ServiceRequestConfiguration : IEntityTypeConfiguration<ServiceReque
 
         builder.HasKey(x => x.Id).HasName("pk_service_requests");
 
+        builder.HasAlternateKey(x => new { x.Id, x.CustomerId })
+            .HasName("uq_service_requests_id_customer");
+
         builder.Property(x => x.Id).HasColumnName("id").HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()");
         builder.Property(x => x.CustomerId).HasColumnName("customer_id").HasColumnType("uuid").IsRequired();
         builder.Property(x => x.GeneralProviderId).HasColumnName("general_provider_id").HasColumnType("uuid").IsRequired();
@@ -48,8 +51,9 @@ public class ServiceRequestConfiguration : IEntityTypeConfiguration<ServiceReque
 
         builder.HasOne(x => x.GeneralProvider)
             .WithMany(gp => gp.ServiceRequests)
-            .HasForeignKey(x => x.GeneralProviderId)
-            .HasConstraintName("fk_service_requests_general_providers_general_provider_id")
+            .HasForeignKey(x => new { x.GeneralProviderId, x.ServiceId })
+            .HasPrincipalKey(gp => new { gp.ProviderId, gp.ServiceId })
+            .HasConstraintName("fk_service_requests_general_provider_service")
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.ProviderLocation)

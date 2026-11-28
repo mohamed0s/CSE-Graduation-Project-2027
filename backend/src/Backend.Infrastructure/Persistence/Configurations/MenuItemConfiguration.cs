@@ -36,8 +36,9 @@ public class MenuItemConfiguration : IEntityTypeConfiguration<MenuItem>
 
         builder.HasOne(x => x.MenuCategory)
             .WithMany(mc => mc.MenuItems)
-            .HasForeignKey(x => x.MenuCategoryId)
-            .HasConstraintName("fk_menu_items_menu_categories_menu_category_id")
+            .HasForeignKey(x => new { x.MenuCategoryId, x.RestaurantId })
+            .HasPrincipalKey(mc => new { mc.Id, mc.RestaurantId })
+            .HasConstraintName("fk_menu_items_menu_category_restaurant")
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

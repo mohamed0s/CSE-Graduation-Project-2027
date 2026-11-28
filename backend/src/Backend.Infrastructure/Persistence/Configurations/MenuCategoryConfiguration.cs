@@ -11,6 +11,9 @@ public class MenuCategoryConfiguration : IEntityTypeConfiguration<MenuCategory>
         builder.ToTable("menu_categories");
         builder.HasKey(x => x.Id).HasName("pk_menu_categories");
 
+        builder.HasAlternateKey(x => new { x.Id, x.RestaurantId })
+            .HasName("uq_menu_categories_id_restaurant");
+
         builder.Property(x => x.Id).HasColumnName("id").HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()");
         builder.Property(x => x.RestaurantId).HasColumnName("restaurant_id").HasColumnType("uuid").IsRequired();
         builder.Property(x => x.Name).HasColumnName("name").HasColumnType("varchar(100)").HasMaxLength(100).IsRequired();
